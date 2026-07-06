@@ -1,31 +1,362 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>our menu</title>
-   
-</head>
-<body>
-     <nav class="navbar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu | Velox Restro & Cafe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
       <div class="nav-container">
-        <a href="#" class="nav-logo"><img src="logo.png" alt="velox" /></a>
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="velox" /></a>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="index.html#branches">Branches</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="nav-cta">Reserve</a>
+        <a href="index.html#contact" class="nav-cta">Reserve</a>
       </div>
     </nav>
 
-    <section id="menu" class="menu">
-        <div class="menu-info">
-            <h1>Menu</h1>
-            
+    <header class="menu-hero">
+      <p class="section-label">Taste of Velox</p>
+      <h1>Our Menu</h1>
+      <p class="menu-hero__sub">
+        Authentic North Indian, Chinese & Arabian cuisine — 88 dishes across
+        18 categories, served fresh from 12 noon to 11:30 PM.
+      </p>
+    </header>
+
+    <nav class="menu-cats" aria-label="Menu categories">
+      <a href="#momos" class="pill">Momos</a>
+      <a href="#soup" class="pill">Soup</a>
+      <a href="#starters-chinese-veg" class="pill">Starters Chinese Veg</a>
+      <a href="#starters-chinese-nonveg" class="pill">Starters Chinese Non-Veg</a>
+      <a href="#rice-noodle" class="pill">Rice & Noodle</a>
+      <a href="#chinese-main-veg" class="pill">Chinese Main Veg</a>
+      <a href="#chinese-main-nonveg" class="pill">Chinese Main Non-Veg</a>
+      <a href="#biryani" class="pill">Biryani</a>
+      <a href="#mandi" class="pill">Arabian Mandi</a>
+      <a href="#indian-main-veg" class="pill">Indian Main Veg</a>
+      <a href="#indian-main-nonveg" class="pill">Indian Main Non-Veg</a>
+      <a href="#tandoori-starters-veg" class="pill">Tandoori Starters Veg</a>
+      <a href="#tandoori-starters-nonveg" class="pill">Tandoori Starters Non-Veg</a>
+      <a href="#breads" class="pill">Indian Breads</a>
+      <a href="#raita-salads" class="pill">Raita & Salads</a>
+      <a href="#dessert" class="pill">Dessert</a>
+      <a href="#beverages" class="pill">Beverages</a>
+      <a href="#soft-drink" class="pill">Soft Drink</a>
+    </nav>
+
+    <main class="menu-page">
+      <!-- MOMOS -->
+      <section class="menu-section" id="momos">
+        <h2 class="menu-section-title">Momos</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Steamed Momo <small>(8 pcs)</small></span><span class="menu-item-price">₹159</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Steamed Momo <small>(8 pcs)</small></span><span class="menu-item-price">₹179</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Tandoori Momo <small>(8 pcs)</small></span><span class="menu-item-price">₹189</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Tandoori Momo <small>(8 pcs)</small></span><span class="menu-item-price">₹229</span></div>
         </div>
-    </section>
-    
-</body>
+      </section>
+
+      <!-- SOUP -->
+      <section class="menu-section" id="soup">
+        <h2 class="menu-section-title">Soup</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Hot & Sour Soup (Veg)</span><span class="menu-item-price">₹149</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Hot & Sour Soup</span><span class="menu-item-price">₹169</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Manchow Soup</span><span class="menu-item-price">₹149</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Manchow Soup</span><span class="menu-item-price">₹169</span></div>
+        </div>
+      </section>
+
+      <!-- STARTERS CHINESE VEG -->
+      <section class="menu-section" id="starters-chinese-veg">
+        <h2 class="menu-section-title">Starters Chinese <span class="title-veg">(Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">French Fry</span><span class="menu-item-price">₹129</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Honey Chilli Potato</span><span class="menu-item-price">₹209</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Chilli Potato</span><span class="menu-item-price">₹199</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Chilli Paneer Dry</span><span class="menu-item-price">₹289</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Chilli Mushroom Dry</span><span class="menu-item-price">₹289</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Crispy Chilli Baby Corn</span><span class="menu-item-price">₹289</span></div>
+        </div>
+      </section>
+
+      <!-- STARTERS CHINESE NON-VEG -->
+      <section class="menu-section" id="starters-chinese-nonveg">
+        <h2 class="menu-section-title">Starters Chinese <span class="title-nonveg">(Non-Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chilli Chicken Dry Boneless <small>(8 pcs)</small></span><span class="menu-item-price">₹309</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Loli Pop</span><span class="menu-item-price">₹209</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Drums of Heaven <small>(8 pcs)</small></span><span class="menu-item-price">₹319</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Velox Special (Chicken / Fish / Mutton)</span><span class="menu-item-price">₹369 / ₹599 / ₹599</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chef Special (Chicken / Fish / Mutton)</span><span class="menu-item-price">₹419 / ₹619 / ₹649</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chilli Fish Dry <small>(8 pcs Boneless)</small></span><span class="menu-item-price">₹579</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chilli Prawn Dry</span><span class="menu-item-price">₹599</span></div>
+        </div>
+      </section>
+
+      <!-- RICE & NOODLE -->
+      <section class="menu-section" id="rice-noodle">
+        <h2 class="menu-section-title">Rice & Noodle <span class="title-mix">(Veg & Non-Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Fried Rice</span><span class="menu-item-price">₹189</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Chilli Garlic Fried Rice</span><span class="menu-item-price">₹229</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Fried Rice</span><span class="menu-item-price">₹239</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chilli Garlic Fried Rice Chicken</span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mix Fried Rice</span><span class="menu-item-price">₹319</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Egg Fried Rice</span><span class="menu-item-price">₹219</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Hakka Noodle</span><span class="menu-item-price">₹219</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Egg Hakka Noodle</span><span class="menu-item-price">₹219</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Hakka Noodle</span><span class="menu-item-price">₹239</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mix Hakka Noodle</span><span class="menu-item-price">₹319</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Chilli Garlic Noodle</span><span class="menu-item-price">₹239</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Chilli Garlic Noodle</span><span class="menu-item-price">₹259</span></div>
+        </div>
+      </section>
+
+      <!-- CHINESE MAIN VEG -->
+      <section class="menu-section" id="chinese-main-veg">
+        <h2 class="menu-section-title">Chinese Main Course <span class="title-veg">(Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Chilli Paneer Gravy</span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Chilli Mushroom Gravy</span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Veg Manchurian Gravy</span><span class="menu-item-price">₹269</span></div>
+        </div>
+      </section>
+
+      <!-- CHINESE MAIN NON-VEG -->
+      <section class="menu-section" id="chinese-main-nonveg">
+        <h2 class="menu-section-title">Chinese Main Course <span class="title-nonveg">(Non-Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chilly Chicken Gravy Boneless <small>(8 pcs)</small></span><span class="menu-item-price">₹339</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Manchurian Gravy</span><span class="menu-item-price">₹339</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chilly Fish Gravy Boneless <small>(8 pcs)</small></span><span class="menu-item-price">₹639</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chilly Prawn Gravy <small>(6 pcs)</small></span><span class="menu-item-price">₹639</span></div>
+        </div>
+      </section>
+
+      <!-- BIRYANI -->
+      <section class="menu-section" id="biryani">
+        <h2 class="menu-section-title">Biryani</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Special Handi Veg Biryani</span><span class="menu-item-price">₹259</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Special Handi Biryani Chicken <small>(4 pcs)</small></span><span class="menu-item-price">₹369</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Special Handi Biryani Mutton <small>(3 pcs)</small></span><span class="menu-item-price">₹469</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Kachi Biryani <small>(2 pcs)</small></span><span class="menu-item-price">₹289</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Kachi Biryani <small>(2 pcs)</small></span><span class="menu-item-price">₹349</span></div>
+        </div>
+      </section>
+
+      <!-- ARABIAN MANDI -->
+      <section class="menu-section" id="mandi">
+        <h2 class="menu-section-title">Arabian Mandi</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Murg Faham Mandi</span><span class="menu-item-price">₹1199</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Arabian Madfoon Mandi Raan</span><span class="menu-item-price">₹2499</span></div>
+        </div>
+      </section>
+
+      <!-- INDIAN MAIN VEG -->
+      <section class="menu-section" id="indian-main-veg">
+        <h2 class="menu-section-title">Indian Main Course <span class="title-veg">(Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Yellow Dal Fry</span><span class="menu-item-price">₹229</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Dal Makhani</span><span class="menu-item-price">₹249</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Dhaba Dal</span><span class="menu-item-price">₹259</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Mix Veg</span><span class="menu-item-price">₹239</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Shahi Paneer</span><span class="menu-item-price">₹289</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Mutter Paneer</span><span class="menu-item-price">₹289</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Paneer Butter Masala</span><span class="menu-item-price">₹289</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Paneer Tikka Lababder</span><span class="menu-item-price">₹339</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Kadhai Paneer</span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Mushroom Masala</span><span class="menu-item-price">₹259</span></div>
+        </div>
+      </section>
+
+      <!-- INDIAN MAIN NON-VEG -->
+      <section class="menu-section" id="indian-main-nonveg">
+        <h2 class="menu-section-title">Indian Main Course <span class="title-nonveg">(Non-Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Egg Curry <small>(2 pcs)</small></span><span class="menu-item-price">₹189</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Curry <small>(4 pcs)</small></span><span class="menu-item-price">₹299</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Tikka Lababder <small>(6 pcs Boneless)</small></span><span class="menu-item-price">₹349</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Kadhai Chicken <small>(4 pcs With Bone)</small></span><span class="menu-item-price">₹349</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Tandoori Butter Chicken <small>(Half / Full)</small></span><span class="menu-item-price">₹399 / ₹669</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Lahori <small>(6 pcs Boneless)</small></span><span class="menu-item-price">₹349</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Murgh Changezi <small>(Half / Full)</small></span><span class="menu-item-price">₹399 / ₹669</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Murg Kali Mirch <small>(4 pcs)</small></span><span class="menu-item-price">₹329</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Rogan Josh <small>(3 / 6 pcs)</small></span><span class="menu-item-price">₹399 / ₹769</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Bhuna Mutton <small>(3 / 6 pcs)</small></span><span class="menu-item-price">₹399 / ₹769</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Korma <small>(3 / 6 pcs)</small></span><span class="menu-item-price">₹399 / ₹769</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Nihari <small>(3 / 6 pcs)</small></span><span class="menu-item-price">₹399 / ₹769</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Adraki Panje Masala <small>(2 / 4 pcs)</small></span><span class="menu-item-price">₹429 / ₹799</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Lal Mass <small>(3 / 6 pcs)</small></span><span class="menu-item-price">₹429 / ₹799</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Tabak Mass <small>(4 pcs)</small></span><span class="menu-item-price">₹469</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Champaran Mutton Handi <small>(8 pcs)</small></span><span class="menu-item-price">₹1099</span></div>
+        </div>
+      </section>
+
+      <!-- TANDOORI STARTERS VEG -->
+      <section class="menu-section" id="tandoori-starters-veg">
+        <h2 class="menu-section-title">Tandoori Starters <span class="title-veg">(Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Paneer Tikka <small>(6 pcs)</small></span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Lazeez Paneer Tikka <small>(6 pcs)</small></span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Paneer 65 <small>(6 pcs)</small></span><span class="menu-item-price">₹269</span></div>
+        </div>
+      </section>
+
+      <!-- TANDOORI STARTERS NON-VEG -->
+      <section class="menu-section" id="tandoori-starters-nonveg">
+        <h2 class="menu-section-title">Tandoori Starters <span class="title-nonveg">(Non-Veg)</span></h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Murg Mughlai Shikanj</span><span class="menu-item-price">₹609</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Tandoori Chicken <small>(Half / Full)</small></span><span class="menu-item-price">₹299 / ₹589</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Angara Tandoori Chicken <small>(Half / Full)</small></span><span class="menu-item-price">₹309 / ₹589</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Tandoori Afgani <small>(Half / Full)</small></span><span class="menu-item-price">₹339 / ₹619</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Jugal Bandi Seek Kebab</span><span class="menu-item-price">₹569</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Seekh Kebab <small>(4 pcs)</small></span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Classic Chicken Tikka <small>(6 pcs)</small></span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Hariyali Chicken Tikka <small>(6 pcs)</small></span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken Malai Tikka <small>(6 pcs)</small></span><span class="menu-item-price">₹269</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Adraki Panje <small>(2 / 4 pcs)</small></span><span class="menu-item-price">₹369 / ₹719</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Karachi Nalli Kabab <small>(1 pc)</small></span><span class="menu-item-price">₹349</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Seekh Kebab <small>(4 pcs)</small></span><span class="menu-item-price">₹399</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Chapli Kebab <small>(2 pcs)</small></span><span class="menu-item-price">₹439</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Mutton Sikandri Raan <small>(1.5 kg)</small></span><span class="menu-item-price">₹2199</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Tandoori Fish Tikka <small>(6 pcs)</small></span><span class="menu-item-price">₹599</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Sarsho Wali Fish Tikka <small>(6 pcs)</small></span><span class="menu-item-price">₹599</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Tandoori Prawn <small>(8 pcs)</small></span><span class="menu-item-price">₹639</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Prawn Fry</span><span class="menu-item-price">₹639</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Tandoori Pomfret Fish <small>(1 pc)</small></span><span class="menu-item-price">₹569</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Pomfret Fry Fish <small>(1 pc)</small></span><span class="menu-item-price">₹569</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Chicken 65 <small>(6 pcs)</small></span><span class="menu-item-price">₹339</span></div>
+          <div class="menu-item"><span class="nonveg"></span><span class="menu-item-name">Fish 65 <small>(6 pcs)</small></span><span class="menu-item-price">₹569</span></div>
+        </div>
+      </section>
+
+      <!-- INDIAN BREADS -->
+      <section class="menu-section" id="breads">
+        <h2 class="menu-section-title">Indian Breads</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Tandoori Roti</span><span class="menu-item-price">₹25</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Tandoori Butter Roti</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Khameri Roti</span><span class="menu-item-price">₹35</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Plain Naan</span><span class="menu-item-price">₹49</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Butter Naan</span><span class="menu-item-price">₹59</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Garlic Naan</span><span class="menu-item-price">₹79</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Cheese Garlic Naan</span><span class="menu-item-price">₹119</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Laccha Paratha</span><span class="menu-item-price">₹79</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Roomali Roti</span><span class="menu-item-price">₹15</span></div>
+        </div>
+      </section>
+
+      <!-- RAITA & SALADS -->
+      <section class="menu-section" id="raita-salads">
+        <h2 class="menu-section-title">Raita & Salads</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Mix Raita</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Plain Curd</span><span class="menu-item-price">₹79</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Green Salad</span><span class="menu-item-price">₹59</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Onion Yam Yam Salad</span><span class="menu-item-price">₹29</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Plain Papad <small>(1 pc)</small></span><span class="menu-item-price">₹20</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Masala Papad <small>(2 pcs)</small></span><span class="menu-item-price">₹69</span></div>
+        </div>
+      </section>
+
+      <!-- DESSERT -->
+      <section class="menu-section" id="dessert">
+        <h2 class="menu-section-title">Dessert</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Nolen Gur Ice Cream <small>(125 ml)</small></span><span class="menu-item-price">₹159</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Anjir Ice Cream <small>(125 ml)</small></span><span class="menu-item-price">₹159</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Paan Ice Cream <small>(125 ml)</small></span><span class="menu-item-price">₹159</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Doodh Dulari</span><span class="menu-item-price">₹249</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Kunafa</span><span class="menu-item-price">₹249</span></div>
+        </div>
+      </section>
+
+      <!-- BEVERAGES -->
+      <section class="menu-section" id="beverages">
+        <h2 class="menu-section-title">Beverages</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Varjin Mint Mojito</span><span class="menu-item-price">₹149</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Blue Lagun</span><span class="menu-item-price">₹149</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Watermelon Mojito</span><span class="menu-item-price">₹149</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Cucumber Mojito</span><span class="menu-item-price">₹149</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Green Apple Mojito</span><span class="menu-item-price">₹149</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Fresh Lime Soda</span><span class="menu-item-price">₹79</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Orio Shake</span><span class="menu-item-price">₹169</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Cold Coffee</span><span class="menu-item-price">₹169</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Cold Coffee with Ice Cream</span><span class="menu-item-price">₹199</span></div>
+        </div>
+      </section>
+
+      <!-- SOFT DRINK -->
+      <section class="menu-section" id="soft-drink">
+        <h2 class="menu-section-title">Soft Drink</h2>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Soft Drink <small>(300 ml)</small></span><span class="menu-item-price">As per MRP</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Red Bull</span><span class="menu-item-price">As per MRP</span></div>
+          <div class="menu-item"><span class="veg"></span><span class="menu-item-name">Packaged Water</span><span class="menu-item-price">As per MRP</span></div>
+        </div>
+      </section>
+
+      <!-- ORDER NOTICE -->
+      <aside class="menu-notice">
+        <p><strong>Order Timing:</strong> 20 to 30 minutes</p>
+        <p>Outside food not allowed. Orders cannot be cancelled once taken.</p>
+        <p><strong>Free Home Delivery:</strong> 7303390042 (Min. order ₹1000) • Taxes as applicable</p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>Velox Restro & Cafe</h3>
+          <p>Food • Family • Friends</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="index.html#about">About</a>
+          <a href="menu.html">Menu</a>
+          <a href="index.html#branches">Branches</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+
+        <div class="footer-locations">
+          <h4>Locations</h4>
+          <a href="index.html#branch-daryaganj">Velox — Daryaganj</a>
+          <a href="index.html#branch-vijaypark">Velox — Vijay Park</a>
+          <a href="index.html#branch-faridabad">VELOX — Faridabad</a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>📞 7303390042</p>
+          <p>✉️ shasan.velox@gmail.com</p>
+        </div>
+
+        <div class="footer-connect">
+          <h4>Connect</h4>
+          <a href="#" target="_blank">Zomato</a>
+          <a href="#" target="_blank">Swiggy</a>
+          <a href="https://www.facebook.com/profile.php?id=100083305211165"
+             target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/veloxrestrocafe?igshid=YmMyMTA2M2Y="
+             target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Velox Restro & Cafe. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>

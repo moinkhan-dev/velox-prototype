@@ -387,7 +387,7 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(242, 237, 225, 0.1);
@@ -409,8 +409,9 @@ body {
 
 /* 4. Each column heading (Quick Links, Contact, Order Online) */
 .footer-links h4,
+.footer-locations h4,
 .footer-contact h4,
-.footer-delivery h4 {
+.footer-connect h4 {
   color: var(--bg-warm);
   font-size: 0.9375rem;
   margin-bottom: 16px;
@@ -418,8 +419,9 @@ body {
 
 /* 5. Links inside each column - stacked vertically */
 .footer-links,
+.footer-locations,
 .footer-contact,
-.footer-delivery {
+.footer-connect {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -427,7 +429,8 @@ body {
 
 /* 6. Individual link/text styling */
 .footer-links a,
-.footer-delivery a {
+.footer-locations a,
+.footer-connect a {
   color: rgba(242, 237, 225, 0.6);
   text-decoration: none;
   font-size: 0.875rem;
@@ -435,7 +438,8 @@ body {
 }
 
 .footer-links a:hover,
-.footer-delivery a:hover {
+.footer-locations a:hover,
+.footer-connect a:hover {
   color: var(--accent);
 }
 
@@ -455,5 +459,516 @@ body {
 .footer-bottom p {
   color: rgba(242, 237, 225, 0.4);
   font-size: 0.75rem;
+}
+
+/* ── Footer responsive ──
+   A 5-column grid on a phone is unreadable.
+   Collapses: 5 cols → 2 cols at 768px (tablet)
+   → 1 col at 480px (phone), with center-aligned text. */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-brand,
+  .footer-links,
+  .footer-locations,
+  .footer-contact,
+  .footer-connect {
+    align-items: center;
+  }
+}
+
+/* Global helper for the small paginated portion hints in menu item names */
+small {
+  font-weight: 400;
+  color: var(--text-body);
+}
+
+/* ─────────────────────────────────────────────────
+   MENU PAGE
+   Build notes (so you can learn from the code):
+
+   1. smooth scroll is set on <html> below so that the
+      category pills (Momos / Soup / ...) jump smoothly
+      to their sections with ZERO JavaScript — pure CSS.
+      One line, big UX win.
+
+   2. The FSSAI veg/non-veg marker uses a regular <span>
+      as the outer square outline, and its ::before
+      pseudo-element draws the inner dot. One element,
+      one child created by CSS — clean, no nested divs
+      polluting the HTML.
+   ───────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Header strip — echoes the hero's cream gradient tone */
+.menu-hero {
+  margin-top: 74px;
+  padding: 64px 60px 48px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--bg-warm) 0%, #e8e2d0 100%);
+}
+
+.menu-hero .section-label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.menu-hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 3rem;
+  color: var(--olive-dark);
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.menu-hero__sub {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* Sticky category pills.
+   Sticks directly under the navbar. The value 74px matches
+   body { padding-top: 74px } — the navbar height — so the
+   pill bar snaps right below it when scrolling. */
+.menu-cats {
+  position: sticky;
+  top: 74px;
+  z-index: 900;
+  display: flex;
+  gap: 10px;
+  padding: 14px 60px;
+  background: rgba(242, 237, 225, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(74, 93, 58, 0.08);
+  border-bottom: 1px solid rgba(74, 93, 58, 0.08);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;          /* Firefox */
+}
+.menu-cats::-webkit-scrollbar {
+  display: none;                  /* Chrome / Edge */
+}
+
+.pill {
+  flex: 0 0 auto;
+  padding: 7px 16px;
+  border: 1px solid var(--olive-dark);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--olive-dark);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.pill:hover {
+  background: var(--olive-dark);
+  color: var(--bg-warm);
+}
+
+/* Main content wrapper that constrains each section's width */
+.menu-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 60px 80px;
+}
+
+/* Each category section.
+   scroll-margin-top ensures that when a pill jumps to a
+   section, the section title isn't hidden behind the
+   sticky pill bar — it pulls the scroll target up by
+   that many pixels. Pure CSS offset, no JS. */
+.menu-section {
+  margin-bottom: 60px;
+  scroll-margin-top: 160px;
+}
+
+.menu-section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.7rem;
+  color: var(--olive-dark);
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+/* The inline "(Veg)" / "(Non-Veg)" tag in some category titles */
+.title-veg {
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.title-nonveg {
+  color: #a33320;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.title-mix {
+  color: var(--text-body);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Two-column item grid on desktop.
+   Saving vertical space on a 88-item page is the point.
+   Collapses to one column on mobile (see media query). */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 48px;
+}
+
+/* Each item is a row with a dashed bottom border.
+   The dashed border IS the dotted leader between
+   name and price — we don't need a separate ::after
+   pseudo or flex-grow trick. The name and price sit
+   as flex siblings, and the row's border creates the
+   visual leader beneath them. Simpler DOM, same look. */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(47, 61, 36, 0.12);
+}
+
+/* FSSAI veg/non-veg markers.
+   The outer <span> is the square outline (border).
+   The inner dot is a ::before — a tiny filled circle
+   centered inside the square using absolute positioning.
+   That tiny center dot is the actual FSSAI spec. */
+.veg,
+.nonveg {
+  position: relative;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.veg {
+  border: 2px solid #2e7d32;
+}
+.nonveg {
+  border: 2px solid #a33320;
+}
+.veg::before,
+.nonveg::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.veg::before    { background: #2e7d32; }
+.nonveg::before { background: #a33320; }
+
+.menu-item-name {
+  flex: 1 1 auto;
+  font-size: 0.92rem;
+  color: var(--olive-dark);
+  font-weight: 500;
+}
+.menu-item-name small {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+/* Price sits at the right edge, in accent green like sig cards */
+.menu-item-price {
+  flex: 0 0 auto;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* The order notice strip near the end */
+.menu-notice {
+  margin-top: 40px;
+  padding: 24px 28px;
+  border: 1px dashed var(--olive-dark);
+  border-radius: 8px;
+  background: rgba(74, 93, 58, 0.04);
+  text-align: center;
+}
+.menu-notice p {
+  font-size: 0.85rem;
+  color: var(--olive-dark);
+  line-height: 1.8;
+}
+
+/* ─────────────────────────────────────────────────
+   MENU PAGE RESPONSIVE
+   ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .menu-hero {
+    padding: 40px 24px 36px;
+  }
+  .menu-hero h1 {
+    font-size: 2.2rem;
+  }
+  .menu-cats {
+    padding: 12px 20px;
+    /* On mobile the pills scroll horizontally. scroll-snap
+       gives that satisfying one-pill-at-a-time feel. */
+    scroll-snap-type: x mandatory;
+  }
+  .pill {
+    scroll-snap-align: start;
+  }
+  .menu-page {
+    padding: 36px 20px 60px;
+  }
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .menu-section-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   BRANCHES SECTION
+
+   Build notes (to help you understand):
+
+   1. The section uses a LIGHT cream background to
+      alternate with the dark sections around it:
+      Signature (dark olive) → Branches (cream) →
+      Footer (dark olive). This rhythmic toggling is
+      what makes polished sites feel designed — the
+      eye gets breathing room instead of one long dark
+      tunnel.
+
+   2. The map iframes use `loading="lazy"` so the
+      browser doesn't fetch the Google Maps tiles until
+      the user scrolls near the section. Saves 200-400 KB
+      of data for visitors who never reach that part.
+
+   3. The map wrapper uses `aspect-ratio: 16/10`.
+      The old way to make responsive iframes was a
+      `padding-top: 56.25%` hack inside a div with
+      an absolutely positioned iframe. `aspect-ratio`
+      (supported since 2021 in all browsers) does
+      the same thing in ONE property on the wrapper —
+      the iframe just fills it naturally. Cleaner,
+      easier to debug, no extra nesting.
+
+   4. `scroll-margin-top: 150px` on the section
+      ensures that when the navbar "Branches" link
+      scrolls to #branches, the section title is
+      visible BELOW the sticky navbar instead of
+      hidden behind it. Same trick used on the menu
+      page category sections.
+   ───────────────────────────────────────────────── */
+.branches {
+  padding: 80px 60px;
+  background: var(--bg-warm);
+  scroll-margin-top: 150px;
+}
+
+.branches-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.branches .section-label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.branches h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 2.5rem;
+  color: var(--olive-dark);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.branches-intro {
+  max-width: 620px;
+  margin: 0 auto 48px;
+  font-size: 0.9375rem;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ── 3-column card grid ──
+   On desktop (>1100px) all three sit side-by-side.
+   Medium screens get 2 columns; phones get 1. */
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  text-align: left;
+}
+
+/* ── Each branch card ──
+   White card matching the signature-card pattern:
+   rounded corners, subtle shadow, hover lift. */
+.branch-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(47, 61, 36, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.branch-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(47, 61, 36, 0.15);
+}
+
+/* ── The responsive map wrapper ──
+   aspect-ratio locks the height to match the width
+   at a 16:10 ratio (slightly taller than standard
+   16:9 — better for a map where north-south
+   orientation matters). The iframe fills 100% of
+   this wrapper. No padding hacks, no absolute
+   positioning — just cleaner modern CSS. */
+.branch-map {
+  aspect-ratio: 16 / 10;
+  background: var(--bg-warm);
+  overflow: hidden;
+}
+.branch-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ── Text block inside the card ── */
+.branch-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* The small "Flagship" badge on the top card.
+   Uses the same accent green as section labels,
+   keeping the design vocabulary consistent. */
+.branch-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-bottom: 6px;
+}
+
+.branch-info h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  color: var(--olive-dark);
+  letter-spacing: 1px;
+}
+
+.branch-loc {
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.branch-address {
+  font-size: 0.875rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.branch-hours {
+  font-size: 0.8125rem;
+  color: var(--text-body);
+}
+.branch-hours span {
+  font-weight: 600;
+  color: var(--olive-dark);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+/* ── Button row inside each card ──
+   Equal-width buttons using `flex: 1` so they
+   match inside each card regardless of text length. */
+.branch-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.branch-actions .btn-primary,
+.branch-actions .btn-secondary {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+/* When only one button is present (e.g. Cards without
+   phone number), change from 1:1 to a simpler fit. */
+.branch-actions--single .btn-primary {
+  flex: none;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+/* ─────────────────────────────────────────────────
+   BRANCHES RESPONSIVE BREAKPOINTS
+   ───────────────────────────────────────────────── */
+
+/* Medium screens: 2 columns (tablets, small laptops) */
+@media (max-width: 1100px) {
+  .branches-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screens: 1 column (phones) */
+@media (max-width: 700px) {
+  .branches {
+    padding: 56px 24px;
+  }
+  .branches h2 {
+    font-size: 2rem;
+  }
+  .branches-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
