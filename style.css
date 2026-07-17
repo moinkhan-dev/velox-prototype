@@ -231,7 +231,7 @@ body {
   display: flex;
   align-items: center;
   background: linear-gradient(to right, rgba(47, 61, 36, 0.92) 0%, rgba(47, 61, 36, 0.4) 100%),
-              url('g22.jpg') center/cover no-repeat;
+              url('images/g22.jpg') center/cover no-repeat;
   padding-left: 60px;
 }
 
@@ -1111,4 +1111,191 @@ html {
 
 .contact-card a:hover {
   text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────
+   HOME PAGE RESPONSIVE
+   ───────────────────────────────────────────────── */
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 12px 24px;
+  }
+  .nav-links {
+    gap: 20px;
+  }
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+  .nav-cta {
+    padding: 8px 20px;
+    font-size: 0.7rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 40px;
+  }
+  .hero-left {
+    text-align: center;
+    align-items: center;
+    order: 2;
+  }
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+  .hero-sub {
+    max-width: 100%;
+  }
+  .hero-btns {
+    justify-content: center;
+  }
+  .hero-right {
+    order: 1;
+  }
+  .hero-collage {
+    min-height: 350px;
+  }
+
+  .about {
+    height: auto;
+    padding: 80px 24px;
+  }
+  .about-content {
+    padding-left: 0;
+    max-width: 100%;
+    text-align: center;
+  }
+  .about-content h2 {
+    font-size: 2.2rem;
+  }
+  .about-stats {
+    justify-content: center;
+  }
+  .about-content .btn-primary {
+    display: inline-block;
+  }
+
+  .signature {
+    padding: 60px 24px;
+  }
+  .signature h2 {
+    font-size: 2rem;
+  }
+  .signature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 30px;
+  }
+  .contact-form {
+    padding: 24px;
+  }
+  .contact-info {
+    position: static;
+  }
+}
+
+/* Phone (max-width: 480px) */
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 10px 16px;
+  }
+  .nav-logo img {
+    height: 45px;
+  }
+  .nav-links {
+    gap: 10px;
+  }
+  .nav-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+  }
+  .nav-cta {
+    padding: 6px 14px;
+    font-size: 0.6rem;
+  }
+
+  .hero-left h1 {
+    font-size: 1.8rem;
+  }
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-sub {
+    font-size: 0.8rem;
+  }
+  .hero-collage {
+    min-height: 250px;
+  }
+  .collage-img--1 {
+    width: 75%;
+    height: 55%;
+    top: 5%;
+    right: 5%;
+  }
+  .collage-img--2 {
+    width: 60%;
+    height: 40%;
+    bottom: 5%;
+    left: 0;
+  }
+  .collage-img--3 {
+    width: 45%;
+    height: 30%;
+    top: 40%;
+    right: 0;
+  }
+
+  .about {
+    padding: 60px 16px;
+  }
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+  .about-stats {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .signature {
+    padding: 40px 16px;
+  }
+  .signature h2 {
+    font-size: 1.6rem;
+  }
+  .signature-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .signature-card img {
+    height: 180px;
+  }
+
+  .contact {
+    padding: 60px 0;
+  }
+  .contact h2 {
+    font-size: 1.8rem;
+  }
+  .contact-grid {
+    padding: 16px;
+  }
+  .contact-form {
+    padding: 20px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
 }
