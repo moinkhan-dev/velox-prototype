@@ -3,27 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Velox Restro & Cafe — Authentic North Indian, Chinese & Arabian cuisine in Delhi NCR. Dine-in, takeaway & delivery. Open 12 PM to 11:30 PM."
+    />
+    <meta property="og:title" content="Velox Restro & Cafe" />
+    <meta
+      property="og:description"
+      content="Authentic North Indian, Chinese & Arabian cuisine in Delhi NCR. Dine-in, takeaway & delivery."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://veloxrestro.com" />
+    <meta property="og:image" content="https://veloxrestro.com/logo.png" />
     <title>Velox Restro & Cafe</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Sora:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Velox Restro & Cafe",
+        "image": "https://veloxrestro.com/logo.png",
+        "url": "https://veloxrestro.com",
+        "telephone": "+91-7303390042",
+        "servesCuisine": ["North Indian", "Chinese", "Arabian", "Mughlai"],
+        "menu": "https://veloxrestro.com/menu.html",
+        "priceRange": "₹20–₹2499",
+        "description": "Velox Restro & Cafe serves authentic North Indian, Chinese, and Arabian cuisine across Delhi NCR. Open daily from 12 PM to 11:30 PM.",
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=100083305211165",
+          "https://instagram.com/veloxrestrocafe",
+          "https://www.zomato.com",
+          "https://www.swiggy.com"
+        ],
+        "hasMenu": {
+          "@type": "Menu",
+          "url": "https://veloxrestro.com/menu.html"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "XI/5041, Plot 6, Ground Floor, Netaji Subhash Marg, Near Hindustan Refrigerator",
+          "addressLocality": "Daryaganj, New Delhi",
+          "addressRegion": "Delhi",
+          "postalCode": "110002",
+          "addressCountry": "IN"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "23:30"
+        },
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Velox Restro & Cafe",
+          "logo": "https://veloxrestro.com/logo.png"
+        }
+      }
+    </script>
   </head>
   <body>
-    <main>
-      <nav class="navbar">
-        <div class="nav-container">
-          <a href="#" class="nav-logo"><img src="logo.png" alt="velox" /></a>
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo"
+          ><img src="logo.png" alt="Velox Restro &amp; Cafe"
+        /></a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu">
           <ul class="nav-links">
-            <li><a href="#about">About</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="#branches">Branches</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <a href="#contact" class="nav-cta">Reserve</a>
+          <a href="order.html" class="nav-cta">Order Online</a>
         </div>
-      </nav>
+      </div>
+    </nav>
+
+    <main>
       <section id="home" class="hero">
+        <span class="hero-bdot"></span>
+        <span class="hero-bracket"></span>
+        <span class="hero-bdot--tr"></span>
+        <span class="hero-bdot--bottom"></span>
         <div class="hero-container">
           <div class="hero-left">
-            <p class="hero-tagline">SERVING THE TASTE SINCE 2020</p>
+            <p class="hero-tagline">SERVING TASTE SINCE 2020 <span class="hero-stamp">&diams;</span></p>
             <h1>Velox Restro &amp; Cafe</h1>
 
             <p class="hero-sub">
@@ -36,44 +122,117 @@
           </div>
           <div class="hero-right">
             <div class="hero-collage">
-              <img src="images/g1.jpg" alt="" class="collage-img collage-img--1" />
-              <img src="images/g7.jpg" alt="" class="collage-img collage-img--2" />
-              <img src="images/g22.jpg" alt="" class="collage-img collage-img--3" />
+              <img
+                src="images/g1.jpg"
+                alt=""
+                width="500"
+                height="333"
+                class="collage-img collage-img--1"
+              />
+              <img
+                src="images/g7.jpg"
+                alt=""
+                width="500"
+                height="333"
+                class="collage-img collage-img--2"
+              />
+              <img
+                src="images/g22.jpg"
+                alt=""
+                width="500"
+                height="333"
+                class="collage-img collage-img--3"
+              />
             </div>
           </div>
         </div>
       </section>
-      <section class="about" id="about">
-        <div class="about-content">
-          <p class="section-label">Our Story</p>
-          <h2>More than<br />just a meal</h2>
-          <p>
-            Velox Restro & Cafe has been serving authentic North Indian cuisine
-            across Delhi, bringing families and friends together over
-            exceptional food. From our signature Velox Special to the legendary
-            Arabian Mandi — every dish is crafted with passion.
-          </p>
-          <p>
-            We also offer <strong>outdoor catering</strong> for events and
-            celebrations — bringing the Velox experience to your doorstep.
-          </p>
+    <div class="about-signature-bg">
+      <div class="bg-slide active" style="background-image: url('images/g22.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/g1.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/g10.jpg')"></div>
+      <section class="about" id="about" data-reveal>
+        <div class="about-inner">
+          <div class="about-content">
+            <p class="section-label">Our Story</p>
+            <h2>More than<br />just a meal</h2>
+            <p>
+              Velox Restro & Cafe was born from a simple belief — that great
+              food brings people together. What started as a small dream in
+              Daryaganj has grown into three beloved branches across Delhi NCR,
+              each serving the same authentic North Indian, Chinese, and Arabian
+              cuisine that made Velox a household name.
+            </p>
+            <p>
+              Every dish at Velox is crafted with fresh ingredients,
+              time-honoured recipes, and a deep respect for tradition. From our
+              signature Velox Special to the slow-cooked Champaran Mutton Handi
+              and the legendary Arabian Mandi — each plate tells a story of
+              passion, quality, and love for food.
+            </p>
 
-          <div class="about-stats">
-            <div class="stat">
-              <h3>3</h3>
-              <p>Branches</p>
+            <div class="about-awards">
+              <div class="award-item">
+                <span class="award-icon">&#9733;</span>
+                <div>
+                  <h4>Best North Indian Restaurant</h4>
+                  <p>Daryaganj Food Awards 2023</p>
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">&#9733;</span>
+                <div>
+                  <h4>People's Choice — Arabian Cuisine</h4>
+                  <p>Delhi NCR Food Fest 2024</p>
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">&#9733;</span>
+                <div>
+                  <h4>Excellence in Catering</h4>
+                  <p>Recognised for quality outdoor service</p>
+                </div>
+              </div>
             </div>
-            <div class="stat">
-              <h3>50+</h3>
-              <p>Dishes</p>
+
+            <p>
+              We also offer <strong>outdoor catering</strong> for events and
+              celebrations — bringing the Velox experience to your doorstep.
+            </p>
+
+            <div class="about-owner">
+              <h3>From the Owner</h3>
+              <blockquote>
+                "At Velox, every dish tells a story of tradition, quality, and
+                love for food. We don't just serve meals — we create memories
+                for our guests."
+              </blockquote>
+              <p class="owner-name">Shahzad Hasan</p>
+              <p class="owner-contact">
+                <a href="tel:+917303390042">7303390042</a> &middot;
+                <a href="mailto:shasan.velox@gmail.com"
+                  >shasan.velox@gmail.com</a
+                >
+              </p>
             </div>
-            <div class="stat">
-              <h3>12PM</h3>
-              <p>Opens Daily</p>
+
+            <div class="about-stats">
+              <div class="stat">
+                <h3>3</h3>
+                <p>Branches</p>
+              </div>
+              <div class="stat">
+                <h3>88+</h3>
+                <p>Dishes</p>
+              </div>
+              <div class="stat">
+                <h3>12PM</h3>
+                <p>Opens Daily</p>
+              </div>
             </div>
+
+            <a href="about.html" class="btn-primary">Learn More</a>
           </div>
-
-          <a href="#contact" class="btn-primary">Book a Table</a>
         </div>
       </section>
       <section id="signature" class="signature">
@@ -81,42 +240,50 @@
           <p class="section-label">Our Pride</p>
           <h2>Chef's Specials</h2>
 
-          <div class="signature-grid">
-            <div class="signature-card">
-              <img src="images/g7.jpg" alt="Velox Special" />
-              <div class="card-info">
-                <h3>Velox Special</h3>
-                <p>Chicken, Fish or Mutton prepared the Velox way</p>
-                <span class="price">₹369 onwards</span>
+          <div class="signature-grid" data-reveal data-reveal-stagger>
+            <a href="order.html" class="signature-card-link">
+              <div class="signature-card">
+                <img src="images/g7.jpg" alt="Velox Special" width="500" height="333" />
+                <div class="card-info">
+                  <h3>Velox Special</h3>
+                  <p>Chicken, Fish or Mutton prepared the Velox way</p>
+                  <span class="price">₹369 onwards</span>
+                </div>
               </div>
-            </div>
+            </a>
 
-            <div class="signature-card">
-              <img src="images/g10.jpg" alt="Arabian Mandi" />
-              <div class="card-info">
-                <h3>Arabian Mandi</h3>
-                <p>Slow cooked Murg Faham or Madfoon Mandi Raan</p>
-                <span class="price">₹1199 onwards</span>
+            <a href="order.html" class="signature-card-link">
+              <div class="signature-card">
+                <img src="images/g10.jpg" alt="Arabian Mandi" width="500" height="333" />
+                <div class="card-info">
+                  <h3>Arabian Mandi</h3>
+                  <p>Slow cooked Murg Faham or Madfoon Mandi Raan</p>
+                  <span class="price">₹1199 onwards</span>
+                </div>
               </div>
-            </div>
+            </a>
 
-            <div class="signature-card">
-              <img src="images/g24.jpg" alt="Champaran Mutton Handi" />
-              <div class="card-info">
-                <h3>Champaran Mutton Handi</h3>
-                <p>Slow cooked mutton in a sealed handi</p>
-                <span class="price">₹1099</span>
+            <a href="order.html" class="signature-card-link">
+              <div class="signature-card">
+                <img src="images/g24.jpg" alt="Champaran Mutton Handi" width="500" height="333" />
+                <div class="card-info">
+                  <h3>Champaran Mutton Handi</h3>
+                  <p>Slow cooked mutton in a sealed handi</p>
+                  <span class="price">₹1099</span>
+                </div>
               </div>
-            </div>
+            </a>
 
-            <div class="signature-card">
-              <img src="images/g4.jpg" alt="Chef Special" />
-              <div class="card-info">
-                <h3>Chef Special</h3>
-                <p>Chef's finest preparation of Chicken, Fish or Mutton</p>
-                <span class="price">₹419 onwards</span>
+            <a href="order.html" class="signature-card-link">
+              <div class="signature-card">
+                <img src="images/g4.jpg" alt="Chef Special" width="500" height="333" />
+                <div class="card-info">
+                  <h3>Chef Special</h3>
+                  <p>Chef's finest preparation of Chicken, Fish or Mutton</p>
+                  <span class="price">₹419 onwards</span>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <div class="signature-cta">
@@ -124,7 +291,20 @@
           </div>
         </div>
       </section>
-      <section id="branches" class="branches">
+    </div>
+    <script>
+      (function() {
+        var slides = document.querySelectorAll('.bg-slide');
+        if (!slides.length) return;
+        var current = 0;
+        setInterval(function() {
+          slides[current].classList.remove('active');
+          current = (current + 1) % slides.length;
+          slides[current].classList.add('active');
+        }, 4000);
+      })();
+    </script>
+      <section id="branches" class="branches" data-reveal>
         <div class="branches-content">
           <p class="section-label">Visit Us</p>
           <h2>Our Branches</h2>
@@ -139,6 +319,7 @@
             <article
               class="branch-card branch-card--flagship"
               id="branch-daryaganj"
+              data-reveal
             >
               <div class="branch-map">
                 <iframe
@@ -164,7 +345,7 @@
                   <span>Hours</span> Mon–Sun · 12 PM – 11:30 PM
                 </p>
                 <div class="branch-actions">
-                  <a href="tel:7303390043" class="btn-secondary">Call</a>
+                  <a href="tel:+917303390043" class="btn-secondary">Call</a>
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=VELOX+RESTRO+CAFE+Daryaganj"
                     target="_blank"
@@ -177,7 +358,7 @@
             </article>
 
             <!-- CARD 2: Vijay Park (original branch) -->
-            <article class="branch-card" id="branch-vijaypark">
+            <article class="branch-card" id="branch-vijaypark" data-reveal>
               <div class="branch-map">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.8093483392513!2d77.27841717512003!3d28.69534917563051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfde1a4f7182b%3A0x7120203878c5985!2sVELOX%20RESTRO%20CAFE!5e0!3m2!1sen!2sin!4v1783379177071!5m2!1sen!2sin"
@@ -201,7 +382,7 @@
                   <span>Hours</span> Mon–Sun · 12 PM – 11:30 PM
                 </p>
                 <div class="branch-actions">
-                  <a href="tel:7303390042" class="btn-secondary">Call</a>
+                  <a href="tel:+917303390042" class="btn-secondary">Call</a>
                   <a
                     href="https://goo.gl/maps/mATzFV1KpUqcM8tV8"
                     target="_blank"
@@ -214,7 +395,7 @@
             </article>
 
             <!-- CARD 3: Faridabad (Indian Heritage Cuisine) -->
-            <article class="branch-card" id="branch-faridabad">
+            <article class="branch-card" id="branch-faridabad" data-reveal>
               <div class="branch-map">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224317.6312898868!2d77.15200462018498!3d28.54083215743612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd3d6fa94f55%3A0xddcbdc97180d4491!2sVELOX%20(Indian%20Heritage%20Cuisine)!5e0!3m2!1sen!2sin!4v1783379010055!5m2!1sen!2sin"
@@ -237,9 +418,8 @@
                 <p class="branch-hours">
                   <span>Hours</span> Mon–Sun · 12 PM – 11:30 PM
                 </p>
-                <div class="branch-actions branch-actions--single">
-                  <!-- Phone number for Faridabad branch to be confirmed.
-                     Single-button layout keeps the card balanced until then. -->
+                <div class="branch-actions">
+                  <a href="tel:+919654515131" class="btn-secondary">Call</a>
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=VELOX+Indian+Heritage+Cuisine+Faridabad"
                     target="_blank"
@@ -253,22 +433,45 @@
           </div>
         </div>
       </section>
-      <section id="contact" class="contact">
+      <section id="contact" class="contact" data-reveal>
         <div class="contact-content">
           <p class="section-label">Get in Touch</p>
           <h2>Connect With Us</h2>
 
           <div class="contact-grid">
             <div class="contact-form">
-              <form class="reservation-form">
+              <form
+                class="reservation-form"
+                id="reservation-form"
+                action="https://formsubmit.co/12expertmoin@gmail.com"
+                method="POST"
+              >
+              
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Velox Reservation Request"
+                />
                 <div class="form-group">
                   <label for="res-name">Full Name</label>
-                  <input type="text" id="res-name" name="name" required />
+                  <input
+                    type="text"
+                    id="res-name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
                   <label for="res-phone">Phone Number</label>
-                  <input type="tel" id="res-phone" name="phone" required />
+                  <input
+                    type="tel"
+                    id="res-phone"
+                    name="phone"
+                    autocomplete="tel"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
@@ -284,7 +487,13 @@
                 <div class="form-row">
                   <div class="form-group">
                     <label for="res-date">Date</label>
-                    <input type="date" id="res-date" name="date" required />
+                    <input
+                      type="date"
+                      id="res-date"
+                      name="date"
+                      min=""
+                      required
+                    />
                   </div>
 
                   <div class="form-group">
@@ -299,6 +508,7 @@
                     type="number"
                     id="res-guests"
                     name="guests"
+                    autocomplete="off"
                     min="1"
                     max="20"
                     required
@@ -314,10 +524,27 @@
                   Reserve a Table
                 </button>
               </form>
+              <script>
+                // Set min date to today (prevents past dates)
+                var dateInput = document.getElementById("res-date");
+                dateInput.min = new Date().toISOString().split("T")[0];
+
+                // Graceful fallback if Formspree ID not yet configured
+                document
+                  .getElementById("reservation-form")
+                  .addEventListener("submit", function (e) {
+                    if (this.action.indexOf("YOUR_FORM_ID") !== -1) {
+                      e.preventDefault();
+                      alert(
+                        "Reservation form needs setup. Contact the owner at shasan.velox@gmail.com or call 7303390042 to reserve.",
+                      );
+                    }
+                  });
+              </script>
             </div>
 
             <div class="contact-info">
-              <div class="contact-card">
+              <div class="contact-card" data-reveal>
                 <h3>Daryaganj</h3>
                 <p class="location">Flagship · New Delhi</p>
                 <p class="phone">7303390043</p>
@@ -325,7 +552,7 @@
                 <a href="https://wa.me/917303390043">Connect on WhatsApp</a>
               </div>
 
-              <div class="contact-card">
+              <div class="contact-card" data-reveal>
                 <h3>Vijay Park</h3>
                 <p class="location">Delhi</p>
                 <p class="phone">7303390042</p>
@@ -333,68 +560,139 @@
                 <a href="https://wa.me/917303390042">Connect on WhatsApp</a>
               </div>
 
-              <div class="contact-card">
+              <div class="contact-card" data-reveal>
                 <h3>Faridabad</h3>
                 <p class="location">Sector 79</p>
-                <p class="phone">TBC</p>
+                <p class="phone">9654515131</p>
                 <p class="hours">Mon–Sun · 12PM – 11:30PM</p>
-                <a href="#">Connect on WhatsApp</a>
+                <a
+                  href="https://wa.me/919654515131"
+                  target="_blank"
+                  rel="noopener"
+                  >Connect on WhatsApp</a
+                >
               </div>
             </div>
           </div>
         </div>
       </section>
-      <footer class="footer">
-        <div class="footer-container">
-          <div class="footer-brand">
-            <h3>Velox Restro &amp; Cafe</h3>
-            <p>Food • Family • Friends</p>
-          </div>
-
-          <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="#about">About</a>
-            <a href="menu.html">Menu</a>
-            <a href="#branches">Branches</a>
-            <a href="#contact">Contact</a>
-          </div>
-
-          <div class="footer-locations">
-            <h4>Locations</h4>
-            <a href="#branch-daryaganj">Velox — Daryaganj</a>
-            <a href="#branch-vijaypark">Velox — Vijay Park</a>
-            <a href="#branch-faridabad">VELOX — Faridabad</a>
-          </div>
-
-          <div class="footer-contact">
-            <h4>Contact</h4>
-            <p>📞 7303390042</p>
-            <p>✉️ shasan.velox@gmail.com</p>
-          </div>
-
-          <div class="footer-connect">
-            <h4>Connect</h4>
-            <a href="#" target="_blank">Zomato</a>
-            <a href="#" target="_blank">Swiggy</a>
+      <section class="social-section" id="social" data-reveal>
+        <div class="social-content">
+          <p class="section-label">Stay Connected</p>
+          <h2>Follow Us</h2>
+          <p class="social-sub">
+            Join our community for updates, special offers, and
+            behind-the-scenes moments.
+          </p>
+          <div class="social-links">
             <a
               href="https://www.facebook.com/profile.php?id=100083305211165"
               target="_blank"
               rel="noopener"
-              >Facebook</a
+              class="social-link facebook"
+              data-reveal
             >
+              <span class="social-icon">f</span>
+              <span>Facebook</span>
+            </a>
             <a
               href="https://instagram.com/veloxrestrocafe?igshid=YmMyMTA2M2Y="
               target="_blank"
               rel="noopener"
-              >Instagram</a
+              class="social-link instagram"
+              data-reveal
             >
+              <span class="social-icon">&#9654;</span>
+              <span>Instagram</span>
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener"
+              class="social-link zomato"
+              data-reveal
+            >
+              <span class="social-icon">Z</span>
+              <span>Zomato</span>
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener"
+              class="social-link swiggy"
+              data-reveal
+            >
+              <span class="social-icon">S</span>
+              <span>Swiggy</span>
+            </a>
           </div>
         </div>
-
-        <div class="footer-bottom">
-          <p>&copy; 2024 Velox Restro &amp; Cafe. All rights reserved.</p>
-        </div>
-      </footer>
+      </section>
     </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>Velox Restro &amp; Cafe</h3>
+          <p>Food • Family • Friends</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#about">About</a>
+          <a href="menu.html">Menu</a>
+          <a href="order.html">Order Online</a>
+          <a href="#branches">Branches</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-locations">
+          <h4>Locations</h4>
+          <a href="#branch-daryaganj">Velox — Daryaganj</a>
+          <a href="#branch-vijaypark">Velox — Vijay Park</a>
+          <a href="#branch-faridabad">VELOX — Faridabad</a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>📞 7303390042</p>
+          <p>✉️ shasan.velox@gmail.com</p>
+        </div>
+
+        <div class="footer-connect">
+          <h4>Connect</h4>
+          <a href="#" target="_blank">Zomato</a>
+          <a href="#" target="_blank">Swiggy</a>
+          <a
+            href="https://www.facebook.com/profile.php?id=100083305211165"
+            target="_blank"
+            rel="noopener"
+            >Facebook</a
+          >
+          <a
+            href="https://instagram.com/veloxrestrocafe?igshid=YmMyMTA2M2Y="
+            target="_blank"
+            rel="noopener"
+            >Instagram</a
+          >
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Velox Restro &amp; Cafe. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      document
+        .getElementById("hamburger")
+        .addEventListener("click", function () {
+          document.querySelector(".navbar").classList.toggle("nav-open");
+        });
+      document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          document.querySelector(".navbar").classList.remove("nav-open");
+        });
+      });
+    </script>
+    <script src="js/reveal.js" defer></script>
   </body>
 </html>

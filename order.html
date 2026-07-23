@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Order online from Velox Restro & Cafe — Delivery, Takeaway or Dine-In. Choose from 130+ dishes. Pay online or COD." />
+    <meta property="og:title" content="Order Online | Velox Restro & Cafe" />
+    <meta property="og:description" content="Order online — Delivery, Takeaway or Dine-In. 130+ dishes available." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://veloxrestro.com/order.html" />
+    <meta property="og:image" content="https://veloxrestro.com/logo.png" />
+    <title>Order Online | Velox Restro & Cafe</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Sora:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body>
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="Velox Restro &amp; Cafe" /></a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu">
+          <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="index.html#branches">Branches</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+          <a href="order.html" class="nav-cta">Order Online</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="order-hero" data-reveal>
+      <p class="section-label">Order Online</p>
+      <h1>Get It Delivered</h1>
+      <p class="order-hero__sub">
+        Browse our menu, add items to your cart, and place your order.
+        Free home delivery on orders above ₹1000 &middot; Open daily 12 PM – 11:30 PM
+      </p>
+    </header>
+
+    <div class="order-timing-banner" id="order-timing-banner"></div>
+
+    <div class="order-layout">
+      <main class="order-items">
+        <div class="order-filters">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" data-filter="veg" aria-pressed="false">Veg</button>
+          <button class="filter-btn" data-filter="nonveg" aria-pressed="false">Non-Veg</button>
+        </div>
+
+        <div class="order-grid" id="order-grid"></div>
+      </main>
+
+      <script src="js/menu-data.js"></script>
+      <script>
+        (function () {
+          var grid = document.getElementById('order-grid');
+          var html = '';
+          menuData.forEach(function (cat) {
+            html += '<h3 class="order-category-title">' + cat.name + '</h3>';
+            cat.items.forEach(function (item) {
+              var cls = item.veg ? 'veg' : 'nonveg';
+              var label = item.veg ? 'Veg' : 'Non-veg';
+              var catFilter = item.veg ? 'veg' : 'nonveg';
+              html += '<div class="order-card" data-reveal data-category="' + catFilter + '">' +
+                '<div class="order-card-header">' +
+                  '<span class="' + cls + '" aria-label="' + label + '"></span>' +
+                  '<h3>' + item.name + '</h3>' +
+                '</div>' +
+                '<span class="order-price">₹' + item.price + '</span>' +
+                '<button class="btn-add" data-name="' + item.name + '" data-price="' + item.price + '" data-veg="' + cls + '">Add</button>' +
+              '</div>';
+            });
+          });
+          grid.innerHTML = html;
+        })();
+      </script>
+
+      <aside class="order-cart" id="order-cart" data-reveal>
+        <div class="order-type-selector">
+          <p class="order-type-label">Order Type</p>
+          <div class="order-type-options">
+            <label class="order-type-option">
+              <input type="radio" name="order-type" value="delivery" checked />
+              <span>Delivery</span>
+            </label>
+            <label class="order-type-option">
+              <input type="radio" name="order-type" value="takeaway" />
+              <span>Takeaway</span>
+            </label>
+            <label class="order-type-option">
+              <input type="radio" name="order-type" value="dinein" />
+              <span>Dine-In</span>
+            </label>
+          </div>
+        </div>
+        <div class="cart-header">
+          <h3>Your Cart</h3>
+          <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <div class="cart-items" id="cart-items">
+          <p class="cart-empty">Your cart is empty. Add items from the menu.</p>
+        </div>
+        <div class="cart-total">
+          <span>Total</span>
+          <span class="total-amount" id="cart-total">₹0</span>
+        </div>
+        <button class="btn-primary cart-checkout" id="checkout-btn" disabled>
+          Proceed to Payment
+        </button>
+        <p class="cart-delivery-note">Free delivery above ₹1000</p>
+      </aside>
+    </div>
+
+    <section class="payment-section" id="payment-section" style="display: none;">
+      <div class="payment-content">
+        <p class="section-label">Payment</p>
+        <h2>Complete Your Order</h2>
+        <div class="payment-summary" id="payment-summary"></div>
+        <div class="payment-methods">
+          <div class="payment-method">
+            <input type="radio" name="payment" id="pay-cod" checked />
+            <label for="pay-cod">Cash on Delivery</label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" name="payment" id="pay-online" />
+            <label for="pay-online">Online Payment (UPI / Card)</label>
+          </div>
+        </div>
+        <div class="payment-details" id="payment-details">
+          <p>Pay when your order arrives. No hassle.</p>
+        </div>
+        <button class="btn-primary" id="place-order-btn">Place Order</button>
+        <button class="btn-secondary" id="back-to-cart-btn">Back to Cart</button>
+      </div>
+    </section>
+
+    <div class="order-notice">
+      <p><strong>Order Timing:</strong> 20 to 30 minutes &middot; <strong>Free Home Delivery:</strong> 7303390042 (Min. ₹1000) &middot; Taxes as applicable</p>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>Velox Restro & Cafe</h3>
+          <p>Food • Family • Friends</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="index.html#about">About</a>
+          <a href="menu.html">Menu</a>
+          <a href="order.html">Order Online</a>
+          <a href="index.html#branches">Branches</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="footer-locations">
+          <h4>Locations</h4>
+          <a href="index.html#branch-daryaganj">Velox — Daryaganj</a>
+          <a href="index.html#branch-vijaypark">Velox — Vijay Park</a>
+          <a href="index.html#branch-faridabad">VELOX — Faridabad</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>7303390042</p>
+          <p>shasan.velox@gmail.com</p>
+        </div>
+        <div class="footer-connect">
+          <h4>Connect</h4>
+          <a href="#" target="_blank">Zomato</a>
+          <a href="#" target="_blank">Swiggy</a>
+          <a href="https://www.facebook.com/profile.php?id=100083305211165" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/veloxrestrocafe?igshid=YmMyMTA2M2Y=" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Velox Restro &amp; Cafe. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // ── Closing time check ──
+      (function checkOrderTiming() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const currentMinutes = hours * 60 + minutes;
+        const openMinutes = 12 * 60;       // 12:00 PM
+        const closeMinutes = 23 * 60;      // 11:00 PM (last order)
+
+        const banner = document.getElementById('order-timing-banner');
+
+        if (currentMinutes < openMinutes || currentMinutes > closeMinutes) {
+          banner.innerHTML = `
+            <div class="timing-closed">
+              <p>We're closed right now. Ordering is available from <strong>12:00 PM to 11:00 PM</strong>.</p>
+            </div>
+          `;
+          document.querySelectorAll('.btn-add, #checkout-btn, #place-order-btn').forEach(el => {
+            el.disabled = true;
+            el.style.opacity = '0.4';
+            el.style.cursor = 'not-allowed';
+          });
+        } else {
+          banner.innerHTML = `
+            <div class="timing-open">
+              <p>We're open! Orders accepted until <strong>11:00 PM</strong> &middot; Delivery within 20–30 min.</p>
+            </div>
+          `;
+        }
+      })();
+
+      // ── Order page JavaScript ──
+
+      // :has() fallback — toggle .option-checked on order-type labels
+      document.querySelectorAll('input[name="order-type"]').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          document.querySelectorAll('.order-type-option').forEach(function (opt) {
+            opt.classList.toggle('option-checked', opt.querySelector('input').checked);
+          });
+        });
+      });
+      // Initialize on load
+      document.querySelectorAll('.order-type-option').forEach(function (opt) {
+        if (opt.querySelector('input').checked) opt.classList.add('option-checked');
+      });
+
+      // Cart state
+      let cart = [];
+
+      // DOM refs
+      const orderGrid = document.getElementById('order-grid');
+      const cartItems = document.getElementById('cart-items');
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      const paymentSection = document.getElementById('payment-section');
+      const orderLayout = document.querySelector('.order-layout');
+      const orderNotice = document.querySelector('.order-notice');
+      const placeOrderBtn = document.getElementById('place-order-btn');
+      const backToCartBtn = document.getElementById('back-to-cart-btn');
+
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          const filter = btn.dataset.filter;
+          document.querySelectorAll('.order-card').forEach(card => {
+            if (filter === 'all') {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = card.dataset.category === filter ? 'flex' : 'none';
+            }
+          });
+        });
+      });
+
+      // Add to cart
+      orderGrid.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-add');
+        if (!btn) return;
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price);
+        const veg = btn.dataset.veg;
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, veg, qty: 1 });
+        }
+        renderCart();
+      });
+
+      // Cart item controls (delegate)
+      cartItems.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cart-qty-btn');
+        if (!btn) return;
+        const name = btn.dataset.name;
+        const action = btn.dataset.action;
+        const item = cart.find(i => i.name === name);
+        if (!item) return;
+        if (action === 'plus') {
+          item.qty += 1;
+        } else if (action === 'minus') {
+          item.qty -= 1;
+          if (item.qty <= 0) {
+            cart = cart.filter(i => i.name !== name);
+          }
+        }
+        renderCart();
+      });
+
+      function renderCart() {
+        const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const count = cart.reduce((sum, item) => sum + item.qty, 0);
+        cartCount.textContent = count;
+        cartTotal.textContent = '₹' + total;
+
+        if (cart.length === 0) {
+          cartItems.innerHTML = '<p class="cart-empty">Your cart is empty. Add items from the menu.</p>';
+          checkoutBtn.disabled = true;
+          return;
+        }
+        checkoutBtn.disabled = false;
+        cartItems.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <div class="cart-item-info">
+              <span class="${item.veg}" aria-label="${item.veg === 'veg' ? 'Veg' : 'Non-veg'}"></span>
+              <span class="cart-item-name">${item.name}</span>
+            </div>
+            <div class="cart-item-controls">
+              <button class="cart-qty-btn" data-action="minus" data-name="${item.name}">-</button>
+              <span class="cart-qty">${item.qty}</span>
+              <button class="cart-qty-btn" data-action="plus" data-name="${item.name}">+</button>
+              <span class="cart-item-price">₹${item.price * item.qty}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Checkout flow
+      checkoutBtn.addEventListener('click', () => {
+        const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const orderTypeEl = document.querySelector('input[name="order-type"]:checked');
+        const orderType = orderTypeEl ? orderTypeEl.value : 'delivery';
+        const typeLabel = { delivery: 'Home Delivery', takeaway: 'Takeaway', dinein: 'Dine-In' }[orderType];
+        document.getElementById('payment-summary').innerHTML = `
+          <p><strong>Order:</strong> ${typeLabel}</p>
+          <p><strong>Order Total:</strong> ₹${total}</p>
+          <p><strong>Items:</strong> ${cart.reduce((s, i) => s + i.qty, 0)}</p>
+        `;
+        orderLayout.style.display = 'none';
+        orderNotice.style.display = 'none';
+        paymentSection.style.display = 'block';
+      });
+
+      backToCartBtn.addEventListener('click', () => {
+        orderLayout.style.display = 'grid';
+        orderNotice.style.display = 'block';
+        paymentSection.style.display = 'none';
+      });
+
+      // Payment logic
+      document.querySelectorAll('input[name="payment"]').forEach(input => {
+        input.addEventListener('change', () => {
+          const details = document.getElementById('payment-details');
+          if (document.getElementById('pay-online').checked) {
+            details.innerHTML = `
+              <p>Pay via UPI — scan or pay to the ID below.</p>
+              <div class="payment-placeholder">
+                <p><strong>UPI ID:</strong> veloxrestro@upi</p>
+                <p><strong>Bank:</strong> HDFC Bank — A/C 5010056789</p>
+                <p><strong>Name:</strong> Velox Restro &amp; Cafe</p>
+              </div>
+            `;
+          } else {
+            details.innerHTML = '<p>Pay when your order arrives. No hassle.</p>';
+          }
+        });
+      });
+
+      placeOrderBtn.addEventListener('click', () => {
+        // Get order type
+        const orderTypeEl = document.querySelector('input[name="order-type"]:checked');
+        const orderType = orderTypeEl ? orderTypeEl.value : 'delivery';
+        const typeLabel = { delivery: 'Home Delivery', takeaway: 'Takeaway', dinein: 'Dine-In' }[orderType];
+
+        // Get payment method
+        const paymentMethod = document.getElementById('pay-online').checked ? 'Online (UPI)' : 'Cash on Delivery';
+
+        // Build WhatsApp message
+        const items = cart.map(i => `${i.name} x${i.qty} = ₹${i.price * i.qty}`).join('%0a');
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        const msg = `New Order:%0a---%0aType: ${typeLabel}%0aPayment: ${paymentMethod}%0a---%0a${items}%0a---%0aTotal: ₹${total}`;
+        window.open(`https://wa.me/917303390042?text=${msg}`, '_blank');
+      });
+
+      renderCart();
+    </script>
+    <script>
+      document.getElementById('hamburger').addEventListener('click', function () {
+        document.querySelector('.navbar').classList.toggle('nav-open');
+      });
+      document.querySelectorAll('.nav-links a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          document.querySelector('.navbar').classList.remove('nav-open');
+        });
+      });
+    </script>
+    <script src="js/reveal.js" defer></script>
+  </body>
+</html>

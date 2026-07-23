@@ -1,0 +1,52 @@
+/* ============================================================
+   base.css  —  Foundation layer
+   ============================================================ */
+
+:root {
+  /* ── Stitch DESIGN.md tokens ── */
+  --bg-warm: #f8f5ee;
+  --bg-card: #ffffff;
+  --primary: #8fb380;
+  --primary-dark: #5c8248;
+  --text-body: #44483c;
+  --accent: #debb7c;
+
+  /* ── Spacing (Stitch: 8px base, 120px section gap) ── */
+  --section-py: 120px;
+  --section-px: 60px;
+  --container-max: 1280px;
+  --gutter: 24px;
+
+  /* ── Typography scale (Stitch) ── */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Sora', sans-serif;
+  --fs-display: 3.75rem;   /* 60px */
+  --fs-headline: 2.5rem;   /* 40px */
+  --fs-headline-md: 1.75rem;
+  --fs-body-lg: 1.25rem;
+  --fs-body: 1rem;         /* 17px base */
+  --fs-label: 0.8125rem;   /* 13px */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  background: var(--bg-warm);
+  padding-top: 74px;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+small {
+  font-weight: 400;
+  color: var(--text-body);
+}
