@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore the full menu at Velox Restro & Cafe — 130+ dishes across 18 categories. North Indian, Chinese, Arabian & more. Veg & Non-veg options." />
+    <meta property="og:title" content="Menu | Velox Restro & Cafe" />
+    <meta property="og:description" content="130+ dishes across 18 categories — North Indian, Chinese, Arabian & more." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://veloxrestro.com/menu.html" />
+    <meta property="og:image" content="https://veloxrestro.com/logo.png" />
+    <title>Menu | Velox Restro & Cafe</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Sora:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body>
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="Velox Restro &amp; Cafe" /></a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu">
+          <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="index.html#branches">Branches</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+          <a href="order.html" class="nav-cta">Order Online</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="menu-hero" data-reveal>
+      <p class="section-label">Taste of Velox</p>
+      <h1>Our Menu</h1>
+      <p class="menu-hero__sub">
+        Authentic North Indian, Chinese & Arabian cuisine — 88 dishes across
+        18 categories, served fresh from 12 noon to 11:30 PM.
+      </p>
+    </header>
+
+    <nav class="menu-cats" aria-label="Menu categories">
+      <a href="#momos" class="pill">Momos</a>
+      <a href="#soup" class="pill">Soup</a>
+      <a href="#starters-chinese-veg" class="pill">Starters Chinese Veg</a>
+      <a href="#starters-chinese-nonveg" class="pill">Starters Chinese Non-Veg</a>
+      <a href="#rice-noodle" class="pill">Rice & Noodle</a>
+      <a href="#chinese-main-veg" class="pill">Chinese Main Veg</a>
+      <a href="#chinese-main-nonveg" class="pill">Chinese Main Non-Veg</a>
+      <a href="#biryani" class="pill">Biryani</a>
+      <a href="#mandi" class="pill">Arabian Mandi</a>
+      <a href="#indian-main-veg" class="pill">Indian Main Veg</a>
+      <a href="#indian-main-nonveg" class="pill">Indian Main Non-Veg</a>
+      <a href="#tandoori-starters-veg" class="pill">Tandoori Starters Veg</a>
+      <a href="#tandoori-starters-nonveg" class="pill">Tandoori Starters Non-Veg</a>
+      <a href="#breads" class="pill">Indian Breads</a>
+      <a href="#raita-salads" class="pill">Raita & Salads</a>
+      <a href="#dessert" class="pill">Dessert</a>
+      <a href="#beverages" class="pill">Beverages</a>
+      <a href="#soft-drink" class="pill">Soft Drink</a>
+    </nav>
+
+    <main class="menu-page" id="menu-page"></main>
+    <script src="js/menu-data.js"></script>
+    <script>
+      var menuHTML = '<div class="menu-filter-bar">' +
+        '<button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>' +
+        '<button class="filter-btn" data-filter="veg" aria-pressed="false">Veg</button>' +
+        '<button class="filter-btn" data-filter="nonveg" aria-pressed="false">Non-Veg</button>' +
+      '</div>';
+
+      menuData.forEach(function (cat) {
+        menuHTML += '<section class="menu-section" data-reveal id="' + cat.id + '">' +
+          '<h2 class="menu-section-title">' + cat.name + '</h2>' +
+          '<div class="menu-grid">';
+
+        cat.items.forEach(function (item) {
+          var cls = item.veg ? 'veg' : 'nonveg';
+          var label = item.veg ? 'Veg' : 'Non-veg';
+          menuHTML += '<div class="menu-item" data-veg="' + cls + '">' +
+            '<span class="' + cls + '" aria-label="' + label + '"></span>' +
+            '<span class="menu-item-name">' + item.name + '</span>' +
+            '<span class="menu-item-price">₹' + item.price + '</span>' +
+          '</div>';
+        });
+
+        menuHTML += '</div></section>';
+      });
+
+      menuHTML += '<aside class="menu-notice">' +
+        '<p><strong>Order Timing:</strong> 20 to 30 minutes</p>' +
+        '<p>Outside food not allowed. Orders cannot be cancelled once taken.</p>' +
+        '<p><strong>Free Home Delivery:</strong> 7303390042 (Min. order ₹1000) &bull; Taxes as applicable</p>' +
+      '</aside>';
+
+      document.getElementById('menu-page').innerHTML = menuHTML;
+
+      // Filter
+      document.querySelectorAll('.filter-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.filter-btn').forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          var filter = btn.dataset.filter;
+          document.querySelectorAll('.menu-item').forEach(function (item) {
+            if (filter === 'all') {
+              item.style.display = '';
+            } else {
+              item.style.display = item.dataset.veg === filter ? '' : 'none';
+            }
+          });
+        });
+      });
+    </script>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>Velox Restro &amp; Cafe</h3>
+          <p>Food • Family • Friends</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="index.html#about">About</a>
+          <a href="menu.html">Menu</a>
+          <a href="index.html#branches">Branches</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+
+        <div class="footer-locations">
+          <h4>Locations</h4>
+          <a href="index.html#branch-daryaganj">Velox — Daryaganj</a>
+          <a href="index.html#branch-vijaypark">Velox — Vijay Park</a>
+          <a href="index.html#branch-faridabad">VELOX — Faridabad</a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>📞 7303390042</p>
+          <p>✉️ shasan.velox@gmail.com</p>
+        </div>
+
+        <div class="footer-connect">
+          <h4>Connect</h4>
+          <a href="#" target="_blank">Zomato</a>
+          <a href="#" target="_blank">Swiggy</a>
+          <a href="https://www.facebook.com/profile.php?id=100083305211165"
+             target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/veloxrestrocafe?igshid=YmMyMTA2M2Y="
+             target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Velox Restro &amp; Cafe. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      document.getElementById('hamburger').addEventListener('click', function () {
+        document.querySelector('.navbar').classList.toggle('nav-open');
+      });
+      document.querySelectorAll('.nav-links a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          document.querySelector('.navbar').classList.remove('nav-open');
+        });
+      });
+    </script>
+    <script src="js/reveal.js" defer></script>
+  </body>
+</html>
