@@ -135,16 +135,17 @@
         <div class="payment-summary" id="payment-summary"></div>
         <div class="payment-methods">
           <div class="payment-method">
-            <input type="radio" name="payment" id="pay-cod" checked />
-            <label for="pay-cod">Cash on Delivery</label>
-          </div>
-          <div class="payment-method">
-            <input type="radio" name="payment" id="pay-online" />
-            <label for="pay-online">Online Payment (UPI / Card)</label>
+            <input type="radio" name="payment" id="pay-online" checked />
+            <label for="pay-online">Online Payment (UPI)</label>
           </div>
         </div>
         <div class="payment-details" id="payment-details">
-          <p>Pay when your order arrives. No hassle.</p>
+          <p>Scan or pay to the UPI ID below.</p>
+          <div class="payment-placeholder">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=veloxrestro@upi&pn=Velox%20Restro" alt="UPI QR code" width="180" height="180" />
+            <p><strong>UPI ID:</strong> veloxrestro@upi</p>
+            <p><strong>Name:</strong> Velox Restro &amp; Cafe</p>
+          </div>
         </div>
         <button class="btn-primary" id="place-order-btn">Place Order</button>
         <button class="btn-secondary" id="back-to-cart-btn">Back to Cart</button>
@@ -421,7 +422,7 @@
         const typeLabel = { delivery: 'Home Delivery', takeaway: 'Takeaway', dinein: 'Dine-In' }[orderType];
 
         // Get payment method
-        const paymentMethod = document.getElementById('pay-online').checked ? 'Online (UPI)' : 'Cash on Delivery';
+        const paymentMethod = 'Online (UPI)';
 
         // Build WhatsApp message
         const items = cart.map(i => `${i.name} x${i.qty} = ₹${i.price * i.qty}`).join('%0a');
