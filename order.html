@@ -439,7 +439,14 @@
         }
         const feeLine = fee > 0 ? `%0aDelivery Fee: ₹${fee}` : '';
         const msg = `New Order:%0a---%0aType: ${typeLabel}%0aPayment: ${paymentMethod}${addressInfo}${feeLine}%0a---%0a${items}%0a---%0aTotal: ₹${grandTotal}`;
-        window.open(`https://wa.me/917303390042?text=${msg}`, '_blank');
+        const waUrl = `https://wa.me/919643994205?text=${msg}`;
+        if (document.getElementById('pay-online').checked) {
+          const upiUrl = `upi://pay?pa=veloxrestro@upi&pn=Velox%20Restro%20%26%20Cafe&am=${grandTotal}&cu=INR`;
+          window.location.href = upiUrl;
+          setTimeout(function () { window.open(waUrl, '_blank'); }, 2000);
+        } else {
+          window.open(waUrl, '_blank');
+        }
       });
 
       renderCart();

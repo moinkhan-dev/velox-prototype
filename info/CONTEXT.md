@@ -1,10 +1,11 @@
 # Velox Restro & Cafe — Project Context
 
 ## Project Info
-- **Goal**: Full restaurant website for uncle's business, learning HTML/CSS
-- **Folder**: `C:\Users\DELL\OneDrive\Desktop\velox prototype`
+- **Goal**: Full restaurant website for uncle's business
+- **Folder**: `C:\Users\DELL\Desktop\velox prototype` (moved off OneDrive, was `OneDrive\Desktop\velox prototype`)
+- **Domain**: veloxrestro.com (owned; og:url already points to it) — second domain veloxrestrocafe.com exists but unused
 - **Git remote**: `https://github.com/moinkhan-dev/velox-prototype.git`
-- **Git status**: master branch, NO commits yet — all files are untracked
+- **Git status**: master branch, initial commit done + force-pushed. NOTE: order.html currently has **user's WhatsApp number (919643994205)** for testing — switch back to uncle's `917303390042` before launch
 - **Available images**: g1.jpg–g44.jpg (40+ food photos), logo.png
 - **Fonts**: Playfair Display (headings), Sora (body) — switched from DM Sans
 - **Contact form**: FormSubmit at `formsubmit.co/12expertmoin@gmail.com` (was Formspree)
@@ -19,7 +20,7 @@
 | `index.html` | ~698 | Home page (nav, hero, about, signature, branches, contact, social, footer, schema) |
 | `about.html` | ~270 | Dedicated about page (hero, story, mosaic gallery, awards, owner quote, stats, catering) |
 | `menu.html` | ~181 | Menu page (veg/non-veg filter, 18 categories, 130+ items, data-driven from menu-data.js) |
-| `order.html` | ~404 | Order page (130+ items, cart, order type, payment, WhatsApp order, closing time, data-driven) |
+| `order.html` | ~459 | Order page (130+ items, cart, order type, delivery address form, delivery fee, payment, WhatsApp order, closing time, data-driven) |
 | `css/base.css` | ~52 | Reset, color & typography variables (Playfair + Sora), spacing/container tokens |
 | `css/layout.css` | ~605 | Structural grids, section wrappers, hero ornaments, about page sections, catering, gallery mosaic |
 | `css/components.css` | ~1582 | Widget styling (navbar, buttons, cards, forms, cart, order type, timing banner, menu items, award cards) |
@@ -71,11 +72,12 @@
 - All 130+ items with 18 category headings matching menu.html
 - Filterable item grid (All / Veg / Non-Veg)
 - **Order type selector** — radio buttons: Delivery / Takeaway / Dine-In
-- Sticky glassmorphism cart sidebar with quantity controls
-- Cart with + / - buttons, total, item count
+- **Delivery address form** — Name / Phone / Address fields, shown only for Delivery, mandatory (blocks checkout + place order if empty)
+- **Delivery fee** — ₹100 added when Delivery selected and subtotal < ₹1000 (free above ₹1000); shown as Subtotal + Fee breakdown in cart, payment summary, and WhatsApp message
+- Sticky glassmorphism cart sidebar (scrollable as a unit so checkout button stays reachable), quantity controls, total, item count
 - **Closing time check** — JS disables ordering before 12 PM and after 11 PM (shows red/green banner)
 - Checkout flow with payment method selection (COD / Online with UPI details)
-- Place order → opens WhatsApp with order summary including order type + payment method
+- Place order → opens WhatsApp with order summary including order type, delivery address, delivery fee, payment method
 - Delivery notice strip
 
 ---
@@ -176,9 +178,14 @@
 ## Known Issues
 
 1. ❌ **Zomato/Swiggy URLs** — `href="#"` placeholders, need real profiles
-2. ❌ **Payment gateway** — UPI flow is manual (shows ID for customer to pay); real automated payment needs backend
-3. ❌ **Git not committed** — needs initial commit + push
+2. ❌ **Payment gateway** — UPI flow is manual (shows ID for customer to pay); owner wants a real payment gateway (Razorpay/Cashfree) — needs a small backend, tracked in TASKS.md
+3. ⚠️ **WhatsApp number** — order.html points to user's number for testing; switch to `917303390042` before launch
 4. ⏳ **New food photos** — photoshoot pending; replace g1.jpg–g44.jpg when ready
+
+## Owner Review (done)
+
+- **Result**: everything approved ✅
+- **New request**: add a payment gateway (backend item — see TASKS.md)
 
 ---
 
@@ -200,5 +207,7 @@
 ## Notes for Next Session
 - New food photos + updated menu from owner needed before launch
 - Real Zomato/Swiggy URLs needed from owner
-- Git push after photos/menu arrive
+- Payment gateway decision: UPI deep-link (no backend, instant) vs real Razorpay/Cashfree (backend)
+- Switch WhatsApp number in order.html back to uncle's `917303390042` before launch
+- Deploy to veloxrestro.com hosting once ready
 - Stitch DESIGN.md at `C:\Downloads\stitch_velox_restro_digital_platform\velox_restro_cafe\DESIGN.md`
