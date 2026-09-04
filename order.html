@@ -110,6 +110,23 @@
           <input type="tel" id="del-phone" placeholder="Phone Number" class="delivery-input" required />
           <textarea id="del-address" placeholder="Full Delivery Address (street, area, landmark)" class="delivery-input delivery-textarea" required></textarea>
         </div>
+        <div class="branch-selector" id="branch-selector" style="display:none;">
+          <p class="branch-selector-label">Select Branch</p>
+          <div class="branch-options">
+            <label class="branch-option">
+              <input type="radio" name="branch" value="daryaganj" />
+              <span>Daryaganj (Flagship)</span>
+            </label>
+            <label class="branch-option">
+              <input type="radio" name="branch" value="vijaypark" />
+              <span>Vijay Park</span>
+            </label>
+            <label class="branch-option">
+              <input type="radio" name="branch" value="faridabad" />
+              <span>Faridabad</span>
+            </label>
+          </div>
+        </div>
         <div class="cart-header">
           <h3>Your Cart</h3>
           <span class="cart-count" id="cart-count">0</span>
@@ -371,6 +388,80 @@
         return true;
       }
 
+      // ── BRANCH SELECTOR ──────────────────────
+      function initBranchSelector() {
+        const branchOptions = document.querySelectorAll('input[name="branch"]');
+        const branchSelector = document.getElementById('branch-selector');
+  
+        // Branch data with phone and UPI ID
+        const branches = {
+          daryaganj: { phone: '7303390043', upi: 'veloxrestro@upi', name: 'Daryaganj (Flagship)' },
+          vijaypark: { phone: '7303390042', upi: 'veloxrestro@upi', name: 'Vijay Park' },
+          faridabad: { phone: '9654515131', upi: 'veloxrestro@upi', name: 'Faridabad' }
+        };
+  
+        // Create branch info display
+        const branchInfo = document.createElement('div');
+        branchInfo.id = 'branch-info';
+        branchInfo.style.display = 'none';
+        branchInfo.innerHTML = '<p><strong>Branch:</strong> <span></span></p><p><strong>Phone:</strong> <span></span></p><p><strong>UPI ID:</strong> <span></span></p>';
+        document.querySelector('.cart-header').appendChild(branchInfo);
+  
+        // Show/hide branch selector based on order type
+        document.querySelectorAll('input[name="order-type"]').forEach(function (radio) {
+          radio.addEventListener('change', function () {
+            if (radio.value === 'delivery') {
+              branchSelector.style.display = 'block';
+            } else {
+              branchSelector.style.display = 'none';
+            }
+          });
+        });
+  
+        // Initialize on load (delivery is default)
+        branchSelector.style.display = 'block';
+  
+        // Branch change handler
+        branchOptions.forEach(function (radio) {
+          radio.addEventListener('change', function () {
+            const branch = branches[radio.value];
+            if (branch) {
+              // Update branch info in cart summary
+              const branchName = document.querySelector('#branch-info p span:first-child');
+              const branchPhone = document.querySelector('#branch-info p span:nth-child(2)');
+              const branchUpi = document.querySelector('#branch-info p span:last-child');
+              
+              if (branchName) branchName.textContent = branch.name;
+              if (branchPhone) branchPhone.textContent = branch.phone;
+              if (branchUpi) branchUpi.textContent = branch.upi;
+            }
+          });
+        });
+  
+        // Initialize on load (delivery is default)
+        branchSelector.style.display = 'block';
+  
+        // Branch change handler
+        branchOptions.forEach(function (radio) {
+          radio.addEventListener('change', function () {
+            const branch = branches[radio.value];
+            if (branch) {
+              // Update branch info in cart summary
+              const branchName = document.querySelector('#branch-info p span:first-child');
+              const branchPhone = document.querySelector('#branch-info p span:nth-child(2)');
+              const branchUpi = document.querySelector('#branch-info p span:last-child');
+              
+              if (branchName) branchName.textContent = branch.name;
+              if (branchPhone) branchPhone.textContent = branch.phone;
+              if (branchUpi) branchUpi.textContent = branch.upi;
+            }
+          });
+        });
+      }
+  
+      // Initialize branch selector on load
+      initBranchSelector();
+
       // Checkout flow
       checkoutBtn.addEventListener('click', () => {
         if (!validateDelivery()) return;
@@ -380,10 +471,33 @@
         const orderTypeEl = document.querySelector('input[name="order-type"]:checked');
         const orderType = orderTypeEl ? orderTypeEl.value : 'delivery';
         const typeLabel = { delivery: 'Home Delivery', takeaway: 'Takeaway', dinein: 'Dine-In' }[orderType];
+        
+        // Get branch info
+        const branchNameEl = document.querySelector('#branch-info p span:first-child');
+        const branchName = branchNameEl ? branchNameEl.textContent : 'Daryaganj (Flagship)';
+        
         let summaryHtml = '<p><strong>Order:</strong> ' + typeLabel + '</p><p><strong>Items:</strong> ' + cart.reduce((s, i) => s + i.qty, 0) + '</p><p><strong>Subtotal:</strong> ₹' + subtotal + '</p>';
         if (fee > 0) summaryHtml += '<p><strong>Delivery Fee:</strong> ₹' + fee + '</p>';
         summaryHtml += '<p style="font-size:1.2rem;font-weight:700;margin-top:8px;"><strong>Grand Total:</strong> ₹' + grandTotal + '</p>';
         document.getElementById('payment-summary').innerHTML = summaryHtml;
+        
+        // Build WhatsApp message with branch info
+        const items = cart.map(i => `${i.name} x${i.qty} = ₹${i.price * i.qty}`).join('%0a');
+        const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        const fee = getDeliveryFee(subtotal);
+        const grandTotal = subtotal + fee;
+        let addressInfo = '';
+        if (orderType === 'delivery') {
+          const name = document.getElementById('del-name').value.trim();
+          const phone = document.getElementById('del-phone').value.trim();
+          const addr = document.getElementById('del-address').value.trim();
+          if (name || phone || addr) {
+            addressInfo = `%0a---%0aDelivery To:%0aName: ${name || 'Not given'}%0aPhone: ${phone || 'Not given'}%0aAddress: ${addr || 'Not given'}`;
+          }
+        }
+        const feeLine = fee > 0 ? `%0aDelivery Fee: ₹${fee}` : '';
+        const msg = `New Order:%0a---%0aType: ${typeLabel}%0aPayment: Online (UPI)%0a---%0aBranch: ${branchName}%0a${addressInfo}%0a---%0a${items}%0a---%0aTotal: ₹${grandTotal}`;
+        const waUrl = `https://wa.me/919643994205?text=${msg}`;
         orderLayout.style.display = 'none';
         orderNotice.style.display = 'none';
         paymentSection.style.display = 'block';

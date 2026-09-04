@@ -1174,11 +1174,48 @@
   cursor: not-allowed;
 }
 
-.cart-delivery-note {
-  text-align: center;
-  font-size: 0.75rem;
+.branch-selector {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid rgba(222, 187, 124, 0.2);
+}
+
+.branch-selector-label {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+}
+
+.branch-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.branch-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(92, 130, 72, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
   color: var(--text-body);
-  margin-top: 10px;
+  transition: all 0.2s;
+}
+
+.branch-option input {
+  accent-color: var(--primary);
+}
+
+.branch-option input:checked {
+  background: rgba(67, 98, 36, 0.06);
+  color: var(--primary-dark);
+  font-weight: 600;
 }
 
 /* ── ORDER TYPE SELECTOR ──────────────────────── */
