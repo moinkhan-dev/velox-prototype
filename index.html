@@ -86,10 +86,10 @@
         <a href="index.html" class="nav-logo"
           ><img src="logo.png" alt="Velox Restro &amp; Cafe"
         /></a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-navigation">
           <span></span><span></span><span></span>
         </button>
-        <div class="nav-menu">
+        <div class="nav-menu" id="site-navigation">
           <ul class="nav-links">
             <li><a href="about.html">About</a></li>
             <li><a href="menu.html">Menu</a></li>
@@ -292,18 +292,7 @@
         </div>
       </section>
     </div>
-    <script>
-      (function() {
-        var slides = document.querySelectorAll('.bg-slide');
-        if (!slides.length) return;
-        var current = 0;
-        setInterval(function() {
-          slides[current].classList.remove('active');
-          current = (current + 1) % slides.length;
-          slides[current].classList.add('active');
-        }, 4000);
-      })();
-    </script>
+    <script src="js/home.js" defer></script>
       <section id="branches" class="branches" data-reveal>
         <div class="branches-content">
           <p class="section-label">Visit Us</p>
@@ -524,23 +513,7 @@
                   Reserve a Table
                 </button>
               </form>
-              <script>
-                // Set min date to today (prevents past dates)
-                var dateInput = document.getElementById("res-date");
-                dateInput.min = new Date().toISOString().split("T")[0];
-
-                // Graceful fallback if Formspree ID not yet configured
-                document
-                  .getElementById("reservation-form")
-                  .addEventListener("submit", function (e) {
-                    if (this.action.indexOf("YOUR_FORM_ID") !== -1) {
-                      e.preventDefault();
-                      alert(
-                        "Reservation form needs setup. Contact the owner at shasan.velox@gmail.com or call 7303390042 to reserve.",
-                      );
-                    }
-                  });
-              </script>
+              <script src="js/reservation.js" defer></script>
             </div>
 
             <div class="contact-info">
@@ -681,18 +654,7 @@
         <p>&copy; 2026 Velox Restro &amp; Cafe. All rights reserved.</p>
       </div>
     </footer>
-    <script>
-      document
-        .getElementById("hamburger")
-        .addEventListener("click", function () {
-          document.querySelector(".navbar").classList.toggle("nav-open");
-        });
-      document.querySelectorAll(".nav-links a").forEach(function (link) {
-        link.addEventListener("click", function () {
-          document.querySelector(".navbar").classList.remove("nav-open");
-        });
-      });
-    </script>
+    <script src="js/site-nav.js" defer></script>
     <script src="js/reveal.js" defer></script>
   </body>
 </html>

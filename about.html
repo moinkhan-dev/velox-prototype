@@ -26,12 +26,12 @@
         <a href="index.html" class="nav-logo">
           <img src="logo.png" alt="Velox Restro & Cafe" />
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-navigation">
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <div class="nav-menu">
+        <div class="nav-menu" id="site-navigation">
           <ul class="nav-links">
             <li><a href="about.html">About</a></li>
             <li><a href="menu.html">Menu</a></li>
@@ -88,35 +88,35 @@
 
           <div class="gallery-mosaic" data-reveal-stagger>
             <div class="mosaic-card mosaic-card--wide">
-              <img src="images/g10.jpg" alt="Our Kitchen" width="500" height="333" />
+              <img src="images/g10.jpg" alt="Our Kitchen" width="500" height="333" loading="lazy" />
               <span class="gallery-label">Our Kitchen</span>
             </div>
             <div class="mosaic-card mosaic-card--tall">
-              <img src="images/g1.jpg" alt="Signature Dishes" width="500" height="333" />
+              <img src="images/g1.jpg" alt="Signature Dishes" width="500" height="333" loading="lazy" />
               <span class="gallery-label">Signature Dishes</span>
             </div>
             <div class="mosaic-card">
-              <img src="images/g4.jpg" alt="Chef Specials" width="500" height="333" />
+              <img src="images/g4.jpg" alt="Chef Specials" width="500" height="333" loading="lazy" />
               <span class="gallery-label">Chef Specials</span>
             </div>
             <div class="mosaic-card mosaic-card--wide">
-              <img src="images/g24.jpg" alt="Champaran Mutton" width="500" height="333" />
+              <img src="images/g24.jpg" alt="Champaran Mutton" width="500" height="333" loading="lazy" />
               <span class="gallery-label">Champaran Mutton</span>
             </div>
             <div class="mosaic-card">
-              <img src="images/g34.jpg" alt="Arabian Mandi" width="500" height="333" />
+              <img src="images/g34.jpg" alt="Arabian Mandi" width="500" height="333" loading="lazy" />
               <span class="gallery-label">Arabian Mandi</span>
             </div>
             <div class="mosaic-card mosaic-card--tall">
-              <img src="images/g2.jpg" alt="Dining Area" width="500" height="333" />
+              <img src="images/g2.jpg" alt="Dining Area" width="500" height="333" loading="lazy" />
               <span class="gallery-label">Our Dining Area</span>
             </div>
             <div class="mosaic-card">
-              <img src="images/g11.jpg" alt="Starters" width="500" height="333" />
+              <img src="images/g11.jpg" alt="Starters" width="500" height="333" loading="lazy" />
               <span class="gallery-label">Starters</span>
             </div>
             <div class="mosaic-card mosaic-card--wide">
-              <img src="images/g7.jpg" alt="The Owner" width="500" height="333" />
+              <img src="images/g7.jpg" alt="The Owner" width="500" height="333" loading="lazy" />
               <span class="gallery-label">The Owner</span>
             </div>
           </div>
@@ -255,16 +255,7 @@
         </div>
       </footer>
 
-    <script>
-      document.getElementById('hamburger').addEventListener('click', function () {
-        document.querySelector('.navbar').classList.toggle('nav-open');
-      });
-      document.querySelectorAll('.nav-links a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          document.querySelector('.navbar').classList.remove('nav-open');
-        });
-      });
-    </script>
+    <script src="js/site-nav.js" defer></script>
     <script src="js/reveal.js" defer></script>
   </body>
 </html>

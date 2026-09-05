@@ -1,0 +1,7 @@
+{
+  "name": "velox-restro-cafe",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/menu-data.test.js"
+  }
+}

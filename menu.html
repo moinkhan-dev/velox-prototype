@@ -24,10 +24,10 @@
     <nav class="navbar" aria-label="Main navigation">
       <div class="nav-container">
         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Velox Restro &amp; Cafe" /></a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-navigation">
           <span></span><span></span><span></span>
         </button>
-        <div class="nav-menu">
+        <div class="nav-menu" id="site-navigation">
           <ul class="nav-links">
             <li><a href="index.html#about">About</a></li>
             <li><a href="menu.html">Menu</a></li>
@@ -71,59 +71,7 @@
 
     <main class="menu-page" id="menu-page"></main>
     <script src="js/menu-data.js"></script>
-    <script>
-      var menuHTML = '<div class="menu-filter-bar">' +
-        '<button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>' +
-        '<button class="filter-btn" data-filter="veg" aria-pressed="false">Veg</button>' +
-        '<button class="filter-btn" data-filter="nonveg" aria-pressed="false">Non-Veg</button>' +
-      '</div>';
-
-      menuData.forEach(function (cat) {
-        menuHTML += '<section class="menu-section" data-reveal id="' + cat.id + '">' +
-          '<h2 class="menu-section-title">' + cat.name + '</h2>' +
-          '<div class="menu-grid">';
-
-        cat.items.forEach(function (item) {
-          var cls = item.veg ? 'veg' : 'nonveg';
-          var label = item.veg ? 'Veg' : 'Non-veg';
-          menuHTML += '<div class="menu-item" data-veg="' + cls + '">' +
-            '<span class="' + cls + '" aria-label="' + label + '"></span>' +
-            '<span class="menu-item-name">' + item.name + '</span>' +
-            '<span class="menu-item-price">₹' + item.price + '</span>' +
-          '</div>';
-        });
-
-        menuHTML += '</div></section>';
-      });
-
-      menuHTML += '<aside class="menu-notice">' +
-        '<p><strong>Order Timing:</strong> 20 to 30 minutes</p>' +
-        '<p>Outside food not allowed. Orders cannot be cancelled once taken.</p>' +
-        '<p><strong>Free Home Delivery:</strong> 7303390042 (Min. order ₹1000) &bull; Taxes as applicable</p>' +
-      '</aside>';
-
-      document.getElementById('menu-page').innerHTML = menuHTML;
-
-      // Filter
-      document.querySelectorAll('.filter-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.querySelectorAll('.filter-btn').forEach(function (b) {
-            b.classList.remove('active');
-            b.setAttribute('aria-pressed', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-pressed', 'true');
-          var filter = btn.dataset.filter;
-          document.querySelectorAll('.menu-item').forEach(function (item) {
-            if (filter === 'all') {
-              item.style.display = '';
-            } else {
-              item.style.display = item.dataset.veg === filter ? '' : 'none';
-            }
-          });
-        });
-      });
-    </script>
+    <script src="js/menu-page.js" defer></script>
 
     <footer class="footer">
       <div class="footer-container">
@@ -168,16 +116,7 @@
         <p>&copy; 2026 Velox Restro &amp; Cafe. All rights reserved.</p>
       </div>
     </footer>
-    <script>
-      document.getElementById('hamburger').addEventListener('click', function () {
-        document.querySelector('.navbar').classList.toggle('nav-open');
-      });
-      document.querySelectorAll('.nav-links a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          document.querySelector('.navbar').classList.remove('nav-open');
-        });
-      });
-    </script>
+    <script src="js/site-nav.js" defer></script>
     <script src="js/reveal.js" defer></script>
   </body>
 </html>

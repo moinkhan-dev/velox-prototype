@@ -1,4 +1,4 @@
-const menuData = [
+window.menuData = [
   {
     id: "momos",
     name: "Momos",
