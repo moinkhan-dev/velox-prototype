@@ -8,6 +8,9 @@
   const orderNotice = document.querySelector('.order-notice');
   const placeOrderButton = document.getElementById('place-order-btn');
   const backButton = document.getElementById('back-to-cart-btn');
+  const branchSelector = document.getElementById('branch-selector');
+  const paymentReference = document.getElementById('payment-reference');
+  const paymentConfirmation = document.getElementById('payment-confirmation');
   let branchInfo = document.getElementById('branch-info');
 
   const branches = {
@@ -24,6 +27,7 @@
     branchInfo.innerHTML = '<p><strong>Branch:</strong> <span></span></p><p><strong>Phone:</strong> <span></span></p>';
     document.querySelector('.cart-header').appendChild(branchInfo);
   }
+  if (branchSelector) branchSelector.style.display = 'block';
 
   function selectedBranch() {
     const radio = document.querySelector('input[name="branch"]:checked');
@@ -106,9 +110,10 @@
     const openNow = minutes >= open && minutes <= close;
     banner.innerHTML = openNow ? '<div class="timing-open"><p>We\'re open! Orders accepted until <strong>11:30 PM</strong> · Delivery within 20–30 min.</p></div>' :
       '<div class="timing-closed"><p>We\'re closed right now. Ordering is available from <strong>12:00 PM to 11:30 PM</strong>.</p></div>';
-    document.querySelectorAll('.btn-add, #checkout-btn, #place-order-btn').forEach(function (button) {
+    document.querySelectorAll('.btn-add, #checkout-btn').forEach(function (button) {
       button.disabled = !openNow;
     });
+    placeOrderButton.disabled = !openNow || !paymentReference.value.trim() || !paymentConfirmation.checked;
   }
 
   document.querySelectorAll('.filter-btn').forEach(function (button) {
@@ -176,11 +181,15 @@
 
   placeOrderButton.addEventListener('click', function () {
     if (!validateOrder()) return;
+    if (!paymentReference.value.trim() || !paymentConfirmation.checked) {
+      alert('Please complete the UPI payment, enter the transaction reference, and confirm it before sending the order.');
+      return;
+    }
     const branch = selectedBranch();
     const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     const fee = deliveryFee(subtotal);
     const total = subtotal + fee;
-    let message = 'New Order:\n---\nType: ' + orderType() + '\nPayment: Online (UPI)\nBranch: ' + branch.name + '\nPhone: ' + branch.phone;
+    let message = 'New Order:\n---\nType: ' + orderType() + '\nPayment: Online (UPI)\nUPI Reference: ' + paymentReference.value.trim() + '\nBranch: ' + branch.name + '\nPhone: ' + branch.phone;
     if (orderType() === 'delivery') message += '\nDelivery To:\nName: ' + document.getElementById('del-name').value.trim() + '\nPhone: ' + document.getElementById('del-phone').value.trim() + '\nAddress: ' + document.getElementById('del-address').value.trim();
     message += '\n---\n' + cart.map(item => item.name + ' x' + item.qty + ' = ₹' + item.price * item.qty).join('\n') + '\n---\nSubtotal: ₹' + subtotal + (fee ? '\nDelivery Fee: ₹' + fee : '') + '\nTotal: ₹' + total;
     window.open('https://wa.me/' + branch.whatsapp + '?text=' + encodeURIComponent(message), '_blank', 'noopener');
@@ -192,5 +201,9 @@
   updateBranchInfo();
   renderCart();
   updateTiming();
+  [paymentReference, paymentConfirmation].forEach(function (input) {
+    input.addEventListener('input', updateTiming);
+    input.addEventListener('change', updateTiming);
+  });
   window.setInterval(updateTiming, 60000);
 })();

@@ -141,9 +141,16 @@
             <p><strong>UPI ID:</strong> veloxrestro@upi</p>
             <p><strong>Name:</strong> Velox Restro &amp; Cafe</p>
           </div>
+          <p class="payment-instruction">Ordering from a computer? Scan the QR code with your phone, or pay using the UPI ID in your banking app.</p>
+          <label class="payment-reference-label" for="payment-reference">UPI transaction reference / UTR</label>
+          <input class="delivery-input" id="payment-reference" type="text" maxlength="40" autocomplete="off" placeholder="Enter the reference after payment" />
+          <label class="payment-confirmation">
+            <input id="payment-confirmation" type="checkbox" />
+            <span>I confirm that I have completed the UPI payment.</span>
+          </label>
         </div>
         <a class="btn-secondary" id="upi-pay-link" href="upi://pay?pa=veloxrestro%40upi&amp;pn=Velox%20Restro%20%26%20Cafe&amp;cu=INR" rel="noopener">Pay with UPI app</a>
-        <button class="btn-primary" id="place-order-btn">I've Paid — Send Order</button>
+        <button class="btn-primary" id="place-order-btn" disabled>I've Paid — Send Order</button>
         <button class="btn-secondary" id="back-to-cart-btn">Back to Cart</button>
       </div>
     </section>
