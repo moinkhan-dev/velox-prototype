@@ -208,6 +208,7 @@
 - New food photos + updated menu from owner needed before launch
 - Real Zomato/Swiggy URLs needed from owner
 - Payment gateway decision: UPI deep-link (no backend, instant) vs real Razorpay/Cashfree (backend)
+- **Coffee shop practice project discarded** — focusing solely on Velox launch
 - Switch WhatsApp number in order.html back to uncle's `917303390042` before launch
 - Deploy to veloxrestro.com hosting once ready
 - Stitch DESIGN.md at `C:\Downloads\stitch_velox_restro_digital_platform\velox_restro_cafe\DESIGN.md`
