@@ -403,30 +403,29 @@
         // Create branch info display
         const branchInfo = document.createElement('div');
         branchInfo.id = 'branch-info';
-        branchInfo.style.display = 'none';
         branchInfo.innerHTML = '<p><strong>Branch:</strong> <span></span></p><p><strong>Phone:</strong> <span></span></p><p><strong>UPI ID:</strong> <span></span></p>';
         document.querySelector('.cart-header').appendChild(branchInfo);
   
-        // Show/hide branch selector based on order type
+        // Show/hide branch selector AND branch info based on order type
+        function updateBranchVisibility() {
+          const orderTypeEl = document.querySelector('input[name="order-type"]:checked');
+          const isDelivery = orderTypeEl && orderTypeEl.value === 'delivery';
+          branchSelector.style.display = isDelivery ? 'block' : 'none';
+          branchInfo.style.display = isDelivery ? 'block' : 'none';
+        }
+  
         document.querySelectorAll('input[name="order-type"]').forEach(function (radio) {
-          radio.addEventListener('change', function () {
-            if (radio.value === 'delivery') {
-              branchSelector.style.display = 'block';
-            } else {
-              branchSelector.style.display = 'none';
-            }
-          });
+          radio.addEventListener('change', updateBranchVisibility);
         });
   
         // Initialize on load (delivery is default)
-        branchSelector.style.display = 'block';
+        updateBranchVisibility();
   
-        // Branch change handler
+        // Branch change handler (single, not duplicated)
         branchOptions.forEach(function (radio) {
           radio.addEventListener('change', function () {
             const branch = branches[radio.value];
             if (branch) {
-              // Update branch info in cart summary
               const branchName = document.querySelector('#branch-info p span:first-child');
               const branchPhone = document.querySelector('#branch-info p span:nth-child(2)');
               const branchUpi = document.querySelector('#branch-info p span:last-child');
@@ -438,25 +437,16 @@
           });
         });
   
-        // Initialize on load (delivery is default)
-        branchSelector.style.display = 'block';
-  
-        // Branch change handler
-        branchOptions.forEach(function (radio) {
-          radio.addEventListener('change', function () {
-            const branch = branches[radio.value];
-            if (branch) {
-              // Update branch info in cart summary
-              const branchName = document.querySelector('#branch-info p span:first-child');
-              const branchPhone = document.querySelector('#branch-info p span:nth-child(2)');
-              const branchUpi = document.querySelector('#branch-info p span:last-child');
-              
-              if (branchName) branchName.textContent = branch.name;
-              if (branchPhone) branchPhone.textContent = branch.phone;
-              if (branchUpi) branchUpi.textContent = branch.upi;
-            }
-          });
-        });
+        // Set initial branch (first option checked by default)
+        const firstBranch = branches[branchOptions[0]?.value || 'daryaganj'];
+        if (firstBranch) {
+          const branchName = document.querySelector('#branch-info p span:first-child');
+          const branchPhone = document.querySelector('#branch-info p span:nth-child(2)');
+          const branchUpi = document.querySelector('#branch-info p span:last-child');
+          if (branchName) branchName.textContent = firstBranch.name;
+          if (branchPhone) branchPhone.textContent = firstBranch.phone;
+          if (branchUpi) branchUpi.textContent = firstBranch.upi;
+        }
       }
   
       // Initialize branch selector on load
@@ -554,7 +544,7 @@
         }
         const feeLine = fee > 0 ? `%0aDelivery Fee: ₹${fee}` : '';
         const msg = `New Order:%0a---%0aType: ${typeLabel}%0aPayment: ${paymentMethod}${addressInfo}${feeLine}%0a---%0a${items}%0a---%0aTotal: ₹${grandTotal}`;
-        const waUrl = `https://wa.me/919643994205?text=${msg}`;
+        const waUrl = `https://wa.me/917303390042?text=${msg}`;
         if (document.getElementById('pay-online').checked) {
           const upiUrl = `upi://pay?pa=veloxrestro@upi&pn=Velox%20Restro%20%26%20Cafe&am=${grandTotal}&cu=INR`;
           window.location.href = upiUrl;
